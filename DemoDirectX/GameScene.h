@@ -13,6 +13,7 @@
 #include "Mario.h"
 #include "EnemyMushRoom.h"
 #include "GameDebugDraw.h"
+#include "Player.h"
 
 #define TIME_KEY_HOLDING 0.12f //thoi gian tinh la key dang duoc giu
 
@@ -43,20 +44,6 @@ protected:
 
     bool IsKeyPress(int keyCode);
 
-    void MarioArrowRightHolding();
-    void MarioArrowLeftHolding();
-    void MarioArrowUpHolding();
-    void MarioArrowDownHolding();
-    void MarioSpaceHolding();
-
-    bool MarioCheckLeftCollide();
-    bool MarioCheckRightCollide(); // co va cham ben phai
-    bool MarioCheckBottomCollide();
-    bool MarioCheckTopCollide();
-
-    std::vector<Entity*> MarioGetImpactor();
-    void HandleEnemiesCollision();
-
     void CheckCameraAndWorldMap(); //kiem tra su va cham cua camera va cac duong bien cua worldmap
 
     //kiem tra va cham cac vat the trong game
@@ -80,11 +67,13 @@ protected:
     std::vector<Enemy*>     mListEnemies;
 
     QuadTree                *mQuadTree;
-    Mario                   *mMario; 
     Sprite                  *mSpriteBricks, *mSpriteBrickGold;
     char                    *mMapPath;
+    std::vector<Entity*>    mListCollisionAble;
 
     std::map<int, bool>     mKeyCodes;
+    
+    Player                  *player;
 };
 
 #endif

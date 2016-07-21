@@ -29,7 +29,6 @@ public:
     //vi tri tuong ung trong sprite ve hinh anh
     RECT *SourceRect; 
 
-    D3DXVECTOR3 Position;
     BrickType Type;
 
     ~Brick();

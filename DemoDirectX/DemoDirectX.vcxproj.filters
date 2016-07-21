@@ -38,11 +38,14 @@
     <Filter Include="FramWork\GameObjects\Enemies">
       <UniqueIdentifier>{1fedd73c-5bf3-4938-973b-72a51e4009b4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FramWork\GameObjects\Mario">
-      <UniqueIdentifier>{f4a1991d-81eb-43ba-b849-9c0a7e8d0c1e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FramWork\GameComponents\Collision">
       <UniqueIdentifier>{90151ce5-72e9-4476-a9a7-88f4af25e1db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FramWork\GameObjects\Objects">
+      <UniqueIdentifier>{b4b1e84b-ce72-4930-bbbd-b8a1a837376f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FramWork\GameObjects\Player">
+      <UniqueIdentifier>{f4a1991d-81eb-43ba-b849-9c0a7e8d0c1e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,9 +84,6 @@
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
       <Filter>FramWork\GameComponents\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>FramWork\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="EnemyMushRoom.cpp">
       <Filter>FramWork\GameObjects\Enemies</Filter>
@@ -152,13 +152,7 @@
       <Filter>FramWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="Mario.cpp">
-      <Filter>FramWork\GameObjects\Mario</Filter>
-    </ClCompile>
-    <ClCompile Include="BrickGold.cpp">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>FramWork\GameObjects</Filter>
+      <Filter>FramWork\GameObjects\Player</Filter>
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
       <Filter>FramWork\GameScenes</Filter>
@@ -186,6 +180,39 @@
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>FramWork\GameComponents\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyState.cpp">
+      <Filter>FramWork\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyData.cpp">
+      <Filter>FramWork\GameObjects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>FramWork\GameObjects\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickGold.cpp">
+      <Filter>FramWork\GameObjects\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerData.cpp">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerRunningState.cpp">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStandingState.cpp">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerJumpingState.cpp">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerFallingState.cpp">
+      <Filter>FramWork\GameObjects\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -224,9 +251,6 @@
     </ClInclude>
     <ClInclude Include="QuadTree.h">
       <Filter>FramWork\GameComponents\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>FramWork\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GameStructs.h">
       <Filter>FramWork\GameComponents</Filter>
@@ -307,13 +331,7 @@
       <Filter>FramWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="Mario.h">
-      <Filter>FramWork\GameObjects\Mario</Filter>
-    </ClInclude>
-    <ClInclude Include="BrickGold.h">
-      <Filter>FramWork\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>FramWork\GameObjects</Filter>
+      <Filter>FramWork\GameObjects\Player</Filter>
     </ClInclude>
     <ClInclude Include="TestScene.h">
       <Filter>FramWork\GameScenes</Filter>
@@ -344,6 +362,39 @@
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>FramWork\GameComponents\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState.h">
+      <Filter>FramWork\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyData.h">
+      <Filter>FramWork\GameObjects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickGold.h">
+      <Filter>FramWork\GameObjects\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>FramWork\GameObjects\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerData.h">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerRunningState.h">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStandingState.h">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerJumpingState.h">
+      <Filter>FramWork\GameObjects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFallingState.h">
+      <Filter>FramWork\GameObjects\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

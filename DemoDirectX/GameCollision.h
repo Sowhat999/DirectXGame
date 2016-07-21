@@ -5,19 +5,23 @@
 #include <d3dx9.h>
 #include <d3d9.h>
 #include "GameLog.h"
+#include "Entity.h"
 
 class GameCollision
 {
 public:
-    struct CollisionReturn
-    {
-        bool IsCollided;
-        RECT RegionCollision;
-    };
-
+    
     GameCollision();
     //kiem tra va cham giua 2 hinh chu nhat
-    static CollisionReturn RectangleAndRectangle(RECT rect, RECT rect2);
+    static Entity::CollisionReturn RectangleAndRectangle(RECT rect, RECT rect2);
+
+    static bool isCollide(RECT rect1, RECT rect2);
+
+    //neu rectagle qua to thi va cham co the bi sai
+    static Entity::SideCollisions getSideCollision(Entity *e1, Entity *e2);
+
+    //kiem tra vi tri va cham dua vao vung va cham cua 2 vat the
+    static Entity::SideCollisions getSideCollision(Entity *e1, Entity::CollisionReturn data);
 
     //kiem tra 1 diem co nam trong hinh chu nhat hay khong
     static bool PointAndRectangle(float x, float y, RECT rect);

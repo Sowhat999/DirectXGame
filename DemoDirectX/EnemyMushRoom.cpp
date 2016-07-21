@@ -7,8 +7,6 @@ EnemyMushRoom::EnemyMushRoom(float x, float y, Camera *camera)
     State = MushroomStates::RunningLeft;
     mName = Enemy::EnemyName::MushRoom;
     mCamera = camera;
-
-    InitBound();
 }
 
 EnemyMushRoom::EnemyMushRoom(D3DXVECTOR3 position, Camera *camera)
@@ -28,11 +26,11 @@ void EnemyMushRoom::Update(float dt)
     switch (State)
     {
         case MushroomStates::RunningLeft:
-            this->SetPosition(this->GetPosition() + D3DXVECTOR3(-MUSH_ROOM_SPEED, 0, 0));
+            this->SetPosition(this->Entity::GetPosition() + D3DXVECTOR3(-MUSH_ROOM_SPEED, 0, 0));
             break;
 
         case MushroomStates::RunningRight:
-            this->SetPosition(this->GetPosition() + D3DXVECTOR3(MUSH_ROOM_SPEED, 0, 0));
+            this->SetPosition(this->Entity::GetPosition() + D3DXVECTOR3(MUSH_ROOM_SPEED, 0, 0));
             break;
 
         case Died:
@@ -40,10 +38,7 @@ void EnemyMushRoom::Update(float dt)
 
         default:
             break;
-    }
-
-    InitBound();
-    
+    }    
 }
 
 void EnemyMushRoom::ChangeState()

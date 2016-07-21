@@ -3,9 +3,11 @@
 
 Brick::Brick(RECT rectBound, RECT *sourceRect, D3DXVECTOR3 position)
 {
-    Bound = rectBound;
     SourceRect = sourceRect;
-    Position = position;
+    posX = position.x;
+    posY = position.y;
+    width = (rectBound.right - rectBound.left);
+    height = (rectBound.bottom - rectBound.top);
 }
 
 Brick::~Brick()

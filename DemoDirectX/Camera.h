@@ -11,6 +11,7 @@ class Camera
 public:
     Camera(int width, int height);
 
+    //center of camera
     void SetPosition(float x, float y);
     void SetPosition(D3DXVECTOR3 pos);
 

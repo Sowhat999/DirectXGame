@@ -40,7 +40,7 @@ void Camera::SetPosition(D3DXVECTOR3 pos)
 
 D3DXVECTOR3 Camera::GetPosition()
 {
-    return D3DXVECTOR3(mPositionX, mPositionY, 1);
+    return D3DXVECTOR3(mPositionX, mPositionY, 0);
 }
 
 RECT Camera::GetBound()

@@ -16,9 +16,7 @@ QuadTree::QuadTree(int level, RECT bound)
 
     this->Bound = bound;
     this->mLevel = level;
-
-    if (mLevel < QUADTREE_MAX_LEVEL)
-        split();
+    this->Nodes = nullptr;
 }
 
 void QuadTree::Clear()
@@ -41,45 +39,31 @@ void QuadTree::Clear()
 
 void QuadTree::insertEntity(Entity *entity)
 {
-    if (Nodes)
-    {
-        for (size_t i = 0; i < 4; i++)
-        {
-            if (Nodes[i])
-            {
-                if (Nodes[i]->isContain(entity))
-                    Nodes[i]->insertEntity(entity);
-            }
-        }
-    }
+    int index = getIndex(entity->GetBound());
 
-    if (this->isContain(entity))
+    if (index == -1)
+    {       
         ListEntity.push_back(entity);
+    }
+    else
+    {
+        if (Nodes == nullptr)
+        {
+            split();
+        }
 
-    TotalCallBackCall++;
-
-    //GAMELOG("Level: %d", mLevel);
-
-    //khoi tao cac node con
-    //if (mLevel < QUADTREE_MAX_LEVEL && Nodes == NULL)
-    //{
-    //    while (!ListEntity.empty())
-    //    {
-    //        for (size_t i = 0; i < 4; i++)
-    //        {
-    //            if (Nodes[i]->isContain(ListEntity.back()))
-    //                Nodes[i]->insertEntity(ListEntity.back());
-    //        }
-
-    //        ListEntity.pop_back();
-    //    }
-    //}
+        Nodes[index]->insertEntity(entity);
+    }
 }
 
 bool QuadTree::isContain(Entity *entity)
 {
-    if (GameCollision::RectangleAndRectangle(entity->Bound, this->Bound).IsCollided)
+    RECT r = entity->GetBound();
+
+    if (r.left >= Bound.left && r.right <= Bound.right && r.top >= Bound.top && r.bottom <= Bound.bottom)
+    {
         return true;
+    }
 
     return false;
 }
@@ -87,8 +71,8 @@ bool QuadTree::isContain(Entity *entity)
 void QuadTree::split()
 {
     //cat phan region (ranh gioi) ra thanh 4 phan bang nhau
+    Nodes = new QuadTree * [4];
 
-    Nodes = new QuadTree*[4];
     RECT bound;
 
     int width = (Bound.right - Bound.left) / 2;
@@ -129,33 +113,99 @@ int QuadTree::getTotalEntities()
 
     if (Nodes)
     {
-        for (QuadTree *node = 0; node != nullptr; node++)
+        for (size_t i = 0; i < 4; i++)
         {
-            total += node->getTotalEntities();
+            total += Nodes[i]->getTotalEntities();
         }
     }
 
     return total;
 }
 
-std::vector<Entity*> QuadTree::getEntitiesCollideAble(std::vector<Entity*> &entitiesOut, Entity *entity)
+int QuadTree::getIndex(RECT body)
 {
-    if(Nodes)
+    /*lay vi tri cua Entity
+    0: nam trong Node con goc trai tren
+    1: nam trong Node con goc phai tren
+    2: nam trong Node con goc trai duoi
+    3: nam trong Node con goc phai duoi
+    -1: bi dinh > 2 node con*/
+
+    float middleVerticle = Bound.left + (Bound.right - Bound.left) / 2.0f;
+    float middleHorizontal = Bound.top + (Bound.bottom - Bound.top) / 2.0f;
+
+    if (body.top >= Bound.top && body.bottom <= middleHorizontal)
     {
-        for (int i = 0; i < 4; i ++)
+        //nam phia ben tren
+        if (body.left >= Bound.left && body.right <= middleVerticle)
         {
-            if (Nodes[i]->isContain(entity))
-                Nodes[i]->getEntitiesCollideAble(entitiesOut, entity);
+            //nam phia ben trai
+            return 0;
+        }
+        else if (body.left >= middleVerticle && body.right <= Bound.right)
+        {
+            //nam phia ben phai
+            return 1;
         }
     }
-    else if (this->isContain(entity))
+    else
     {
-        for (std::vector<Entity*>::iterator i = this->ListEntity.begin(); i != this->ListEntity.end(); i++)
+        //nam phia ben duoi
+        if (body.left >= Bound.left && body.right <= middleVerticle)
         {
-            if (entity != *i)
-                entitiesOut.push_back(*i);
+            //nam phia ben trai
+            return 2;
+        }
+        else if (body.left >= middleVerticle && body.right <= Bound.right)
+        {
+            //nam phia ben phai
+            return 3;
         }
     }
 
-    return entitiesOut;
+    return -1;
+}
+
+void QuadTree::getAllEntities(std::vector<Entity*> &entitiesOut)
+{
+    if (Nodes)
+    {
+        for (size_t i = 0; i < 4; i++)
+        {
+            Nodes[i]->getAllEntities(entitiesOut);
+        }
+    }
+
+    for (std::vector<Entity*>::iterator i = this->ListEntity.begin(); i != this->ListEntity.end(); i++)
+    {
+        entitiesOut.push_back(*i);
+    }
+}
+
+void QuadTree::getEntitiesCollideAble(std::vector<Entity*> &entitiesOut, Entity *entity)
+{
+    int index = this->getIndex(entity->GetBound());
+
+    if (index == -1)
+    {
+        //nam trong >= 2 node con
+        //this->getAllEntities(entitiesOut);
+    }
+    else
+    {
+        if (Nodes)
+        {            
+            for (size_t i = 0; i < 4; i++)
+            {
+                //lay index cua entity
+                Nodes[i]->getEntitiesCollideAble(entitiesOut, entity);
+            }
+        }
+    }
+
+    //nam trong 1 node con nao do
+    for (size_t i = 0; i < ListEntity.size(); i++)
+    {
+        entitiesOut.push_back(ListEntity.at(i));
+    }
 }

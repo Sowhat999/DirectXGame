@@ -1,47 +1,17 @@
-﻿Build started 08-Jul-16 4:54:53 PM.
-     1>Project "C:\Users\locth\Documents\GitHub\DemoDirectX\DemoDirectX\DemoDirectX.vcxproj" on node 2 (Build target(s)).
+﻿Build started 13-Jul-16 3:05:59 PM.
+     1>Project "C:\Users\locth\Documents\GitHub\DirectXGame\DemoDirectX\DemoDirectX.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gz /TP /analyze- /errorReport:prompt Enemy.cpp EnemyMushRoom.cpp Game.cpp GameScene.cpp SceneGamePlay.cpp main.cpp
-         EnemyMushRoom.cpp
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\enemymushroom.cpp(5): warning C4305: 'argument' : truncation from 'double' to 'float'
-         Generating Code...
-         Compiling...
-         main.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         SceneGamePlay.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-         GameScene.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(24): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(38): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(64): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(144): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(155): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(165): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(167): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(188): warning C4244: 'argument' : conversion from 'size_t' to 'FLOAT', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(215): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(219): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(357): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(543): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(549): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(555): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\gamescene.cpp(561): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         Game.cpp
-         c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\game.cpp(7): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\game.cpp(129): warning C4244: 'argument' : conversion from 'float' to 'DWORD', possible loss of data
-         Enemy.cpp
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\enemy.cpp(43): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
-     1>c:\users\locth\documents\github\demodirectx\demodirectx\enemy.cpp(44): warning C4244: '=' : conversion from 'float' to 'LONG', possible loss of data
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gz /TP /analyze- /errorReport:prompt PlayerStandingState.cpp
+         PlayerStandingState.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\locth\Documents\GitHub\DemoDirectX\Debug\DemoDirectX.exe" /INCREMENTAL /NOLOGO d3dx9.lib d3d9.lib dxguid.lib dinput8.lib zlib.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\locth\Documents\GitHub\DemoDirectX\Debug\DemoDirectX.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\locth\Documents\GitHub\DemoDirectX\Debug\DemoDirectX.lib" /MACHINE:X86 Debug\Animation.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.exe" /INCREMENTAL /NOLOGO d3dx9.lib d3d9.lib dxguid.lib dinput8.lib zlib.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\Brick.obj
          Debug\BrickGold.obj
          Debug\Camera.obj
          Debug\Enemy.obj
+         Debug\EnemyData.obj
          Debug\EnemyMushRoom.obj
+         Debug\EnemyState.obj
          Debug\Entity.obj
          Debug\Game.obj
          Debug\GameCollision.obj
@@ -75,17 +45,23 @@
          Debug\TmxTileset.obj
          Debug\TmxUtil.obj
          Debug\Mario.obj
+         Debug\Player.obj
+         Debug\PlayerData.obj
+         Debug\PlayerFallingState.obj
+         Debug\PlayerJumpingState.obj
+         Debug\PlayerRunningState.obj
+         Debug\PlayerStandingState.obj
+         Debug\PlayerState.obj
          Debug\QuadTree.obj
          Debug\Scene.obj
          Debug\SceneGamePlay.obj
          Debug\SceneManager.obj
-         Debug\Shader.obj
          Debug\Sprite.obj
          Debug\TestScene.obj
          Debug\TransitionScanDown.obj
-         DemoDirectX.vcxproj -> C:\Users\locth\Documents\GitHub\DemoDirectX\Debug\DemoDirectX.exe
-     1>Done Building Project "C:\Users\locth\Documents\GitHub\DemoDirectX\DemoDirectX\DemoDirectX.vcxproj" (Build target(s)).
+         DemoDirectX.vcxproj -> C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.exe
+     1>Done Building Project "C:\Users\locth\Documents\GitHub\DirectXGame\DemoDirectX\DemoDirectX.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:08.05
+Time Elapsed 00:00:03.48

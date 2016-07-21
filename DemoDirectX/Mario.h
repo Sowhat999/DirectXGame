@@ -6,7 +6,7 @@
 #include "QuadTree.h"
 #include "GameMap.h"
 
-#define JUMP_VELOCITY 8
+#define JUMP_VELOCITY 8.0f //van to
 #define JUMP_DELTA_VELOCITY 0.1 // do bien thien van toc
 #define RUN_VELOCITY_KEY_PRESS 0.15
 #define RUN_VELOCITY_KEY_HOLDING 2.0
@@ -42,7 +42,7 @@ public:
     Mario(GameMap *gameMap);
     ~Mario();
 
-    void Update(float dt);
+    void update(float dt);
     void Draw();
     void LoadAnimations();
 
@@ -69,12 +69,9 @@ public:
     float GetSpeedYDefault();
 
     void SetCurrentVelocity(D3DXVECTOR3 velocity);
-    D3DXVECTOR3 GetCurrentVelocity();
 
     void SetCurrentJumpVelocity(float velocity);
     float GetCurrentJumpVelocity();
-
-    D3DXVECTOR3 GetPosition();
 
     void SetPosition(D3DXVECTOR3 pos);
     void SetPosition(float x, float y);
@@ -91,28 +88,18 @@ public:
     void SetJumpHigh(float high);
     float GetJumpHigh();
 
-    RECT GetBoundOnScreen();
     RECT GetBoundInWorld(); //vi tri thuc te cua mario
-
-    void OnArrowLeftHolding();
-    void OnArrowRightHolding();
-    void OnSpaceHolding();
-   
-    void OnSpaceReleased();
-
-    void DoMarioRunningAction();
-    void DoMarioJumpingAction();
-    void DoMarioFallingDownAction();
 
     bool IsCollideTop; //va cham phia ben tren Mario
     bool IsCollideBottom; //va cham phia duoi Mario
     bool IsCollideLeft; //va cham ben trai Mario
     bool IsCollideRight; //va cham ben phai mario
 
+    void handleKeyboard (std::map<int, bool> keys);
+
     //void SetCurrentVelocity();
 
 private:
-    D3DXVECTOR3                 mCurrentVelocity, mPosition;
 
     float                       mSpeedX, 
                                 mSpeedYDefault,

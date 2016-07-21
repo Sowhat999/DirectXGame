@@ -9,7 +9,7 @@
 #include "GameGlobal.h"
 #include "Entity.h"
 
-#define QUADTREE_MAX_LEVEL 4 //so node con toi da
+//#define QUADTREE_MAX_LEVEL 6 //so node con toi da
 
 class QuadTree
 {
@@ -24,13 +24,22 @@ public:
     std::vector<Entity*> ListEntity; //danh sach cac phan tu co trong vung va cham (Bound)
     
     //lay danh sach nhung Entity co kha nang xay ra va cham
-    std::vector<Entity*> getEntitiesCollideAble(std::vector<Entity*> &entitiesOut,Entity *entity); // tra ve danh sach cac phan tu nam trong vung va cham
+    void getEntitiesCollideAble(std::vector<Entity*> &entitiesOut,Entity *entity); // tra ve danh sach cac phan tu nam trong vung va cham
+    void getAllEntities(std::vector<Entity*> &entitiesOut);
     int getTotalEntities();
     static int TotalCallBackCall;
 
     RECT Bound;
 
 protected:
+    /*lay vi tri cua Entity 
+    0: nam trong Node con goc trai tren
+    1: nam trong Node con goc phai tren
+    2: nam trong Node con goc trai duoi
+    3: nam trong Node con goc phai duoi
+    -1: bi dinh > 2 node con*/
+    int getIndex(RECT body);
+
     void split(); //thuc hien chia ra cac node
     bool isContain(Entity *entity);
     int mLevel; //tuong ung voi so node

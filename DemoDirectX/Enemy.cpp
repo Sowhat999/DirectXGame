@@ -3,7 +3,9 @@
 
 Enemy::Enemy()
 {
-
+    this->enemyData = new EnemyData();
+    this->enemyData->enemy = this;
+    this->enemyData->state = nullptr;
 }
 
 Enemy::~Enemy()
@@ -13,6 +15,25 @@ Enemy::~Enemy()
 void Enemy::Update(float dt)
 {
     Animation::Update(dt);
+
+    if (this->enemyData->state)
+    {
+        this->enemyData->state->update(dt);
+    }
+    
+}
+
+void Enemy::handleKeyboard(std::map<int, bool> keys)
+{
+    if (this->enemyData->state)
+    {
+        this->enemyData->state->handleKeyboard(keys);
+    }
+}
+
+void Enemy::setCamera(Camera *camera)
+{
+    this->mCamera = camera;
 }
 
 void Enemy::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXVECTOR2 scalingCenter, D3DXCOLOR colorKey)
@@ -33,16 +54,9 @@ void Enemy::SetGravity(D3DXVECTOR3 gravity)
     mGravity = gravity;
 }
 
-Enemy::EnemyName Enemy::GetName()
+void Enemy::changeState(EnemyState *newState)
 {
-    return mName;
-}
+    delete this->enemyData->state;
 
-void Enemy::InitBound()
-{
-    Bound.left = this->GetPosition().x - this->getWidth() / 2;
-    Bound.top = this->GetPosition().y - this->getHeight() / 2;
-    Bound.right = Bound.left + this->getWidth();
-    Bound.bottom = Bound.top + this->getHeight();
-
+    this->enemyData->state = newState;
 }

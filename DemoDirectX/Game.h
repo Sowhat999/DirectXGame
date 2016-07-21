@@ -13,7 +13,6 @@
 #include "Animation.h"
 #include "GameMap.h"
 #include "SceneManager.h"
-#include "Shader.h"
 #include "SceneGamePlay.h"
 #include "TestScene.h"
 
