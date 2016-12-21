@@ -7,6 +7,15 @@
 class PlayerState
 {
 public:
+    enum StateName
+    {
+        Standing,
+        Running,
+        Falling,
+        Jumping,
+        Die
+    };
+
     ~PlayerState();
 
     virtual void update(float dt);
@@ -16,11 +25,12 @@ public:
     //side va cham voi player
     virtual void onCollision(Entity *impactor, Entity::SideCollisions side, Entity::CollisionReturn data);
 
+    virtual StateName GetState() = 0;
+
 protected:
     PlayerState(PlayerData *playerData);
     PlayerState();
-    
 
-    PlayerData *playerData;
+    PlayerData *mPlayerData;
 };
 

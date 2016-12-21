@@ -112,10 +112,6 @@ int InitDevice()
     d3dpp.BackBufferCount = 1;
     d3dpp.BackBufferWidth = SCREEN_WIDTH;
     d3dpp.BackBufferHeight = SCREEN_HEIGHT;
-    //d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
-    //d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
-    //d3dpp.EnableAutoDepthStencil = true;
-    //d3dpp.hDeviceWindow = mHwnd;
 
     HRESULT dvresult = mD3d->CreateDevice(D3DADAPTER_DEFAULT,
         D3DDEVTYPE_HAL,
@@ -127,7 +123,6 @@ int InitDevice()
 
     D3DXCreateSprite(GameGlobal::GetCurrentDevice(), &mSpriteHandler);
     GameGlobal::SetCurrentSpriteHandler(mSpriteHandler);
-    //mDevice->CreateOffscreenPlainSurface(100, 100, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT, &mBackground, NULL);
 
     return 1;
 }

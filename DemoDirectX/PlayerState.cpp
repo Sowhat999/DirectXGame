@@ -3,7 +3,7 @@
 
 PlayerState::PlayerState(PlayerData *playerData)
 {
-    this->playerData = playerData;
+    this->mPlayerData = playerData;
 }
 
 PlayerState::PlayerState()

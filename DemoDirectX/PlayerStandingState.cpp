@@ -1,13 +1,13 @@
 #include "PlayerStandingState.h"
 #include "Player.h"
-#include "PlayerJumpingState.h"
 #include "PlayerFallingState.h"
+#include "GameDefine.h"
 
 PlayerStandingState::PlayerStandingState(PlayerData *playerData)
 {
-    this->playerData = playerData;
-    this->playerData->player->vx = 0;
-    this->playerData->player->vy = 0;
+    this->mPlayerData = playerData;
+    this->mPlayerData->player->SetVx(0);
+    this->mPlayerData->player->SetVy(0);
 }
 
 
@@ -24,14 +24,7 @@ void PlayerStandingState::handleKeyboard(std::map<int, bool> keys)
 {
     if (keys[VK_LEFT] || keys[VK_RIGHT])
     {
-        this->playerData->player->changeState(new PlayerRunningState(this->playerData), Player::PlayerStates::Running);
-        return;
-    }
-
-    if (keys[VK_SPACE] && playerData->player->getState() != Player::Jumping 
-        && playerData->player->getState() !=  Player::Falling)
-    {
-        this->playerData->player->changeState(new PlayerJumpingState(this->playerData), Player::Jumping);
+        this->mPlayerData->player->SetState(new PlayerRunningState(this->mPlayerData));
         return;
     }
 }
@@ -53,9 +46,9 @@ void PlayerStandingState::onCollision(Entity *impactor, Entity::SideCollisions s
         case Entity::BottomLeft:
         case Entity::BottomRight:
         case Entity::Bottom:
-            if (data.RegionCollision.right - data.RegionCollision.left <= PLAYER_BOTTOM_RANGE_FALLING)
+            if (data.RegionCollision.right - data.RegionCollision.left <= Define::PLAYER_BOTTOM_RANGE_FALLING)
             {
-                this->playerData->player->changeState(new PlayerFallingState(playerData), Player::Falling);
+                this->mPlayerData->player->SetState(new PlayerFallingState(mPlayerData));
             }
             break;
         case Entity::NotKnow:
@@ -63,4 +56,9 @@ void PlayerStandingState::onCollision(Entity *impactor, Entity::SideCollisions s
         default:
             break;
     }
+}
+
+PlayerState::StateName PlayerStandingState::GetState()
+{
+    return PlayerState::Standing;
 }

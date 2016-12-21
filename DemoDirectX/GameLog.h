@@ -8,9 +8,9 @@
 using namespace std;
 
 //Show and save game logs
-#define GAMELOG(s,...) saveLog(s , ##__VA_ARGS__)
+#define GAMELOG(s,...) printLog(s , ##__VA_ARGS__)
 //#define GAMELOG(s,...) saveLog(s, ##__VA_ARGS__)
-
+void printLog(const LPCSTR s, ...);
 void saveLog(const LPCSTR s, ...);
 void loadFile();
 static FILE *mFile;

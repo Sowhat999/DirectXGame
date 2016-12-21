@@ -4,12 +4,19 @@
 #include "Sprite.h"
 #include "GameGlobal.h"
 #include "Camera.h"
+#include "Brick.h"
 
-class BrickGold : public Entity
+class BrickGold : public Brick
 {
 public:
-    BrickGold(RECT rectBound, RECT *sourceRect, D3DXVECTOR3 position);
+    BrickGold(D3DXVECTOR3 position);
     ~BrickGold();
+
+    virtual const char* FileName();
+    virtual int TotalFrame();
+    virtual int Row();
+    virtual int Column();
+    virtual float SecondPerFrame();
 };
 
 #endif

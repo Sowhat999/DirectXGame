@@ -15,14 +15,8 @@ static int mIsLoaded = 0;
     OutputDebugStringA(os.str().c_str());   \
 }
 
-/*
-std::ostringstream os;
-os << s;
-OutputDebugStringA(os.str().c_str());   \
-*/
-void saveLog(const LPCSTR s, ...)
+void printLog(const LPCSTR s, ...)
 {
-    //size_t buffsize = strlen(s) * sizeof(char);
     char buff[1024];
     int length = strlen(s);
 
@@ -32,35 +26,49 @@ void saveLog(const LPCSTR s, ...)
     va_end(ap);
 
     OUTLOG(buff);
+}
 
-    if (!mIsLoaded)
-        loadFile();
+void saveLog(const LPCSTR s, ...)
+{
+    ////size_t buffsize = strlen(s) * sizeof(char);
+    //char buff[1024];
+    //int length = strlen(s);
 
-    if (mFile)
-    {
-        if (!mIsLoaded)
-        {
-            mIsLoaded = 1;
+    //va_list ap;
+    //va_start(ap, s);
+    //_vsnprintf(buff, sizeof(buff), s, ap); //sizeof(szBuff)
+    //va_end(ap);
 
-            //get current time
-            time_t now = time(0);
-            struct tm tstruct;
-            tstruct = *localtime(&now);
-            char buf[80];
-            strftime(buf, sizeof(buf), "%d-%m-%Y.%X", &tstruct);
+    //OUTLOG(buff);
 
-            fprintf_s(mFile, "--->");
-            fprintf_s(mFile, buf);
-            fprintf_s(mFile, "<---");
-            fprintf(mFile, "\n");
-        }
+    //if (!mIsLoaded)
+    //    loadFile();
 
-        fprintf(mFile, buff);
-        fprintf(mFile, "\n");
-        fclose(mFile);
-    }
-    else
-        OUTLOG("Open file failed!");
+    //if (mFile)
+    //{
+    //    if (!mIsLoaded)
+    //    {
+    //        mIsLoaded = 1;
+
+    //        //get current time
+    //        time_t now = time(0);
+    //        struct tm tstruct;
+    //        tstruct = *localtime(&now);
+    //        char buf[80];
+    //        strftime(buf, sizeof(buf), "%d-%m-%Y.%X", &tstruct);
+
+    //        fprintf_s(mFile, "--->");
+    //        fprintf_s(mFile, buf);
+    //        fprintf_s(mFile, "<---");
+    //        fprintf(mFile, "\n");
+    //    }
+
+    //    fprintf(mFile, buff);
+    //    fprintf(mFile, "\n");
+    //    fclose(mFile);
+    //}
+    //else
+    //    OUTLOG("Open file failed!");
 }
 
 void loadFile()

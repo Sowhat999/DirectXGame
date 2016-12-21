@@ -14,38 +14,41 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="FramWork">
+    <Filter Include="FrameWork">
       <UniqueIdentifier>{197b388b-ceee-4cc5-84c9-8fa7dd6cc7a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FramWork\GameInterfaces">
+    <Filter Include="FrameWork\GameInterfaces">
       <UniqueIdentifier>{82026a55-b69b-4d86-9a89-5b9e60b9c269}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FramWork\GameComponents">
+    <Filter Include="FrameWork\GameComponents">
       <UniqueIdentifier>{904cfce5-28d1-4baa-b52d-a09c93cdf7fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FramWork\GameObjects">
-      <UniqueIdentifier>{b9cba6fc-bf1d-45f7-bc2c-d0d675f92661}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FramWork\ThirdParty">
-      <UniqueIdentifier>{362e3b94-c80b-48a0-841e-826a4d73751e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FramWork\ThirdParty\MapReader">
-      <UniqueIdentifier>{248e25dc-bca4-4d69-82da-4d20aaa39cc6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FramWork\GameScenes">
-      <UniqueIdentifier>{fb4f5de1-998c-42cf-880c-12afdfc29367}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FramWork\GameObjects\Enemies">
-      <UniqueIdentifier>{1fedd73c-5bf3-4938-973b-72a51e4009b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FramWork\GameComponents\Collision">
+    <Filter Include="FrameWork\GameComponents\Collision">
       <UniqueIdentifier>{90151ce5-72e9-4476-a9a7-88f4af25e1db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FramWork\GameObjects\Objects">
+    <Filter Include="FrameWork\GameObjects">
+      <UniqueIdentifier>{b9cba6fc-bf1d-45f7-bc2c-d0d675f92661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\GameObjects\Enemies">
+      <UniqueIdentifier>{1fedd73c-5bf3-4938-973b-72a51e4009b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\GameObjects\Objects">
       <UniqueIdentifier>{b4b1e84b-ce72-4930-bbbd-b8a1a837376f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FramWork\GameObjects\Player">
+    <Filter Include="FrameWork\GameObjects\Player">
       <UniqueIdentifier>{f4a1991d-81eb-43ba-b849-9c0a7e8d0c1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\ThirdParty">
+      <UniqueIdentifier>{362e3b94-c80b-48a0-841e-826a4d73751e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\ThirdParty\MapReader">
+      <UniqueIdentifier>{248e25dc-bca4-4d69-82da-4d20aaa39cc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\GameScenes">
+      <UniqueIdentifier>{fb4f5de1-998c-42cf-880c-12afdfc29367}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\GameObjects\Objects\Brick">
+      <UniqueIdentifier>{12bac22a-461f-4a5a-8775-261018ae6cb0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,354 +56,358 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameInput.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="GameLog.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="GameTime.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="GameMap.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="GameConverter.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="GameGlobal.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="SceneGamePlay.cpp">
-      <Filter>FramWork\GameScenes</Filter>
+      <Filter>FrameWork\GameScenes</Filter>
     </ClCompile>
     <ClCompile Include="GameDebugDraw.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="GameCollision.cpp">
-      <Filter>FramWork\GameComponents\Collision</Filter>
+      <Filter>FrameWork\GameComponents\Collision</Filter>
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
-      <Filter>FramWork\GameComponents\Collision</Filter>
+      <Filter>FrameWork\GameComponents\Collision</Filter>
     </ClCompile>
     <ClCompile Include="EnemyMushRoom.cpp">
-      <Filter>FramWork\GameObjects\Enemies</Filter>
+      <Filter>FrameWork\GameObjects\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>FramWork\GameObjects\Enemies</Filter>
+      <Filter>FrameWork\GameObjects\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\base64.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\miniz.c">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\tinyxml2.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxEllipse.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxImage.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxImageLayer.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxLayer.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxMap.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxObject.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxObjectGroup.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxPolygon.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxPolyline.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxPropertySet.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxTerrain.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxTerrainArray.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxTile.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxTileLayer.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxTileOffset.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxTileset.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapReader\TmxUtil.cpp">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
-    </ClCompile>
-    <ClCompile Include="Mario.cpp">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
-      <Filter>FramWork\GameScenes</Filter>
+      <Filter>FrameWork\GameScenes</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
-      <Filter>FramWork\GameScenes</Filter>
+      <Filter>FrameWork\GameScenes</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
     <ClCompile Include="TransitionScanDown.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>FramWork\GameComponents\Collision</Filter>
+      <Filter>FrameWork\GameComponents\Collision</Filter>
     </ClCompile>
     <ClCompile Include="EnemyState.cpp">
-      <Filter>FramWork\GameObjects\Enemies</Filter>
+      <Filter>FrameWork\GameObjects\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="EnemyData.cpp">
-      <Filter>FramWork\GameObjects\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>FramWork\GameObjects\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="BrickGold.cpp">
-      <Filter>FramWork\GameObjects\Objects</Filter>
+      <Filter>FrameWork\GameObjects\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerState.cpp">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerData.cpp">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerRunningState.cpp">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStandingState.cpp">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerJumpingState.cpp">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerFallingState.cpp">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>FrameWork\GameObjects\Objects\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickGold.cpp">
+      <Filter>FrameWork\GameObjects\Objects\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickNormal.cpp">
+      <Filter>FrameWork\GameObjects\Objects\Brick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IInput.h">
-      <Filter>FramWork\GameInterfaces</Filter>
+      <Filter>FrameWork\GameInterfaces</Filter>
     </ClInclude>
     <ClInclude Include="GameInput.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="GameLog.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="GameTime.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="GameMap.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="GameConverter.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="GameGlobal.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="SceneGamePlay.h">
-      <Filter>FramWork\GameScenes</Filter>
+      <Filter>FrameWork\GameScenes</Filter>
     </ClInclude>
     <ClInclude Include="GameDebugDraw.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="GameCollision.h">
-      <Filter>FramWork\GameComponents\Collision</Filter>
+      <Filter>FrameWork\GameComponents\Collision</Filter>
     </ClInclude>
     <ClInclude Include="QuadTree.h">
-      <Filter>FramWork\GameComponents\Collision</Filter>
+      <Filter>FrameWork\GameComponents\Collision</Filter>
     </ClInclude>
     <ClInclude Include="GameStructs.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="EnemyMushRoom.h">
-      <Filter>FramWork\GameObjects\Enemies</Filter>
+      <Filter>FrameWork\GameObjects\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>FramWork\GameObjects\Enemies</Filter>
+      <Filter>FrameWork\GameObjects\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\base64.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\tinyxml2.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxEllipse.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxImage.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxImageLayer.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxLayer.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxMap.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxMapTile.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxObject.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxObjectGroup.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxPoint.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxPolygon.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxPolyline.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxPropertySet.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxTerrain.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxTerrainArray.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxTile.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxTileLayer.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxTileOffset.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxTileset.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\TmxUtil.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\zconf.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapReader\zlib.h">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
-    </ClInclude>
-    <ClInclude Include="Mario.h">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </ClInclude>
     <ClInclude Include="TestScene.h">
-      <Filter>FramWork\GameScenes</Filter>
+      <Filter>FrameWork\GameScenes</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="MyGraphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>FramWork\GameScenes</Filter>
+      <Filter>FrameWork\GameScenes</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>FramWork\GameComponents</Filter>
+      <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
     <ClInclude Include="TransitionScanDown.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>FramWork\GameComponents\Collision</Filter>
+      <Filter>FrameWork\GameComponents\Collision</Filter>
     </ClInclude>
     <ClInclude Include="EnemyState.h">
-      <Filter>FramWork\GameObjects\Enemies</Filter>
+      <Filter>FrameWork\GameObjects\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="EnemyData.h">
-      <Filter>FramWork\GameObjects\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="BrickGold.h">
-      <Filter>FramWork\GameObjects\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>FramWork\GameObjects\Objects</Filter>
+      <Filter>FrameWork\GameObjects\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerState.h">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerData.h">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerRunningState.h">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStandingState.h">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerJumpingState.h">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerFallingState.h">
-      <Filter>FramWork\GameObjects\Player</Filter>
+      <Filter>FrameWork\GameObjects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>FrameWork\GameObjects\Objects\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickGold.h">
+      <Filter>FrameWork\GameObjects\Objects\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickNormal.h">
+      <Filter>FrameWork\GameObjects\Objects\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDefine.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="MapReader\Tmx.h.in">
-      <Filter>FramWork\ThirdParty\MapReader</Filter>
+      <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </None>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

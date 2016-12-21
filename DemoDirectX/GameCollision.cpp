@@ -11,7 +11,7 @@ GameCollision::~GameCollision()
 {
 }
 
-Entity::CollisionReturn GameCollision::RectangleAndRectangle(RECT rect1, RECT rect2)
+Entity::CollisionReturn GameCollision::RecteAndRect(RECT rect1, RECT rect2)
 {
     Entity::CollisionReturn result;
 
@@ -80,11 +80,11 @@ Entity::SideCollisions GameCollision::getSideCollision(Entity *e1, Entity *e2)
     RECT rect1 = e1->GetBound();
     RECT rect2 = e2->GetBound();
 
-    float w = (e1->width + e2->width) / 2.0f;
-    float h = (e1->height + e2->height) / 2.0f;
+    float w = (e1->GetWidth() + e2->GetWidth()) / 2.0f;
+    float h = (e1->GetHeight() + e2->GetHeight()) / 2.0f;
 
-    float dx = e1->posX - e2->posX;
-    float dy = e1->posY - e2->posY;
+    float dx = e1->GetPosition().x - e2->GetPosition().y;
+    float dy = e1->GetPosition().x - e2->GetPosition().y;
 
     if (abs(dx) <= w && abs(dy) <= h)
     {

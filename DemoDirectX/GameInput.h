@@ -17,7 +17,6 @@ class GameInput
 public:
     static GameInput* GetInstance();
     void InitInputDevice();
-    void InitKeyboard();
     void UpdateInput();
     void OnKeyDown(int keyCode);
     void OnKeyUp(int keyCode);

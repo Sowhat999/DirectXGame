@@ -1,67 +1,72 @@
 #include "Player.h"
 #include "PlayerFallingState.h"
 #include "GameCollision.h"
+#include "PlayerJumpingState.h"
 
 Player::Player()
 {
-    animationStanding = new Animation("mario/standingright.png", 1, 1, 1, 0);
-    animationJumping = new Animation("mario/jumpingright.png", 1, 1, 1, 0);
-    animationRunning = new Animation("mario/runningright.png", 2, 1, 2, 0.15f);
+    mAnimationStanding = new Animation("mario/standingright.png", 1, 1, 1, 0);
+    mAnimationJumping = new Animation("mario/jumpingright.png", 1, 1, 1, 0);
+    mAnimationRunning = new Animation("mario/runningright.png", 2, 1, 2, 0.15f);
 
-    this->playerData = new PlayerData();
-    this->playerData->player = this;
+    this->mPlayerData = new PlayerData();
+    this->mPlayerData->player = this;
     this->vx = 0;
     this->vy = 0;
-    this->changeState(new PlayerFallingState(this->playerData), PlayerStates::Falling);
+    this->SetState(new PlayerFallingState(this->mPlayerData));
+
+    allowMoveLeft = true;
+    allowMoveRight = true;
+    allowJump = true;
 }
 
 Player::~Player()
 {
 }
 
-void Player::update(float dt)
+void Player::Update(float dt)
 {    
-    Entity::update(dt);
+    mCurrentAnimation->Update(dt);
 
-    currentAnimation->Update(dt);
-
-    if (this->playerData->state)
+    if (this->mPlayerData->state)
     {
-        this->playerData->state->update(dt);
-    }   
-
-    string s;
-    switch (currentState)
-    {
-        case Player::Standing:
-            s = "standing";
-            break;
-        case Player::Running:
-            s = "running";
-            break;
-        case Player::Falling:
-            s = "falling";
-            break;
-        case Player::Jumping:
-            s = "jumping";
-            break;
-        case Player::Die:
-            break;
-        default:
-            break;
+        this->mPlayerData->state->update(dt);
     }
-    GAMELOG("current State: %s", s.c_str());
+
+    Entity::Update(dt);
 }
 
-void Player::handleKeyboard(std::map<int, bool> keys)
+void Player::HandleKeyboard(std::map<int, bool> keys)
 {
-    if (this->playerData->state)
+    if (this->mPlayerData->state)
     {
-        this->playerData->state->handleKeyboard(keys);
+        this->mPlayerData->state->handleKeyboard(keys);
     }
 }
 
-void Player::setCamera(Camera *camera)
+void Player::OnKeyPressed(int key)
+{
+    if (key == VK_SPACE)
+    {
+        if (allowJump)
+        {
+            if (mCurrentState == PlayerState::Running || mCurrentState == PlayerState::Standing)
+            {
+                this->SetState(new PlayerJumpingState(this->mPlayerData));
+            }
+
+            allowJump = false;
+        }
+    }
+}
+
+void Player::OnKeyUp(int key)
+{
+    if (key == VK_SPACE)
+        allowJump = true;
+}
+
+void Player::SetCamera(Camera *camera)
 {
     this->mCamera = camera;
 }
@@ -73,67 +78,67 @@ void Player::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale, D3D
 
     if (mCamera)
     {
-        currentAnimation->Draw(D3DXVECTOR3(posX, posY, 0), sourceRect, scale, trans, angle, rotationCenter, scalingCenter, colorKey);
+        mCurrentAnimation->Draw(D3DXVECTOR3(posX, posY, 0), sourceRect, scale, trans, angle, rotationCenter, scalingCenter, colorKey);
     }
     else
     {
-        currentAnimation->Draw(D3DXVECTOR3(posX, posY, 0), sourceRect, scale, trans, angle, rotationCenter, scalingCenter, colorKey);
+        mCurrentAnimation->Draw(D3DXVECTOR3(posX, posY, 0));
     }        
 }
 
-void Player::changeState(PlayerState *newState, Player::PlayerStates stateName)
+void Player::SetState(PlayerState *newState)
 {
-    delete this->playerData->state;
+    delete this->mPlayerData->state;
 
-    this->playerData->state = newState;
+    this->mPlayerData->state = newState;
 
-    this->changeAnimation(stateName);
+    this->changeAnimation(newState->GetState());
 
-    currentState = stateName;
+    mCurrentState = newState->GetState();
 }
 
-void Player::onCollision(Entity *impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
+void Player::OnCollision(Entity *impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
 {
-    this->playerData->state->onCollision(impactor, side, data);
+    this->mPlayerData->state->onCollision(impactor, side, data);
 }
 
 RECT Player::GetBound()
 {
     RECT rect;
-    rect.left = this->posX - currentAnimation->getWidth() / 2;
-    rect.right = rect.left + currentAnimation->getWidth();
-    rect.top = this->posY - currentAnimation->getHeight() / 2;
-    rect.bottom = rect.top + currentAnimation->getHeight();
+    rect.left = this->posX - mCurrentAnimation->GetWidth() / 2;
+    rect.right = rect.left + mCurrentAnimation->GetWidth();
+    rect.top = this->posY - mCurrentAnimation->GetHeight() / 2;
+    rect.bottom = rect.top + mCurrentAnimation->GetHeight();
 
     return rect;
 }
 
-void Player::changeAnimation(PlayerStates state)
+void Player::changeAnimation(PlayerState::StateName state)
 {
     switch (state)
     {
-        case Player::Running:
-            currentAnimation = animationRunning;
+        case PlayerState::Running:
+            mCurrentAnimation = mAnimationRunning;
             break;
 
-        case Player::Standing:
-            currentAnimation = animationStanding;
+        case PlayerState::Standing:
+            mCurrentAnimation = mAnimationStanding;
             break;
 
-        case Player::Falling:
-            currentAnimation = animationJumping;
+        case PlayerState::Falling:
+            mCurrentAnimation = mAnimationJumping;
             break;
 
-        case Player::Jumping:
-            currentAnimation = animationJumping;
+        case PlayerState::Jumping:
+            mCurrentAnimation = mAnimationJumping;
             break;
 
         default:
             break;
     }
 
-    this->width = currentAnimation->getWidth();
-    this->height = currentAnimation->getHeight();
+    this->width = mCurrentAnimation->GetWidth();
+    this->height = mCurrentAnimation->GetHeight();
 }
 
 Player::MoveDirection Player::getMoveDirection()
@@ -150,15 +155,15 @@ Player::MoveDirection Player::getMoveDirection()
     return MoveDirection::None;
 }
 
-void Player::onNoCollisionWithBottom()
+void Player::OnNoCollisionWithBottom()
 {
-    if (currentState != Jumping && currentState != Falling)
+    if (mCurrentState != PlayerState::Jumping && mCurrentState != PlayerState::Falling)
     {
-        this->changeState(new PlayerFallingState(this->playerData), Player::Falling);
+        this->SetState(new PlayerFallingState(this->mPlayerData));
     }    
 }
 
-Player::PlayerStates Player::getState()
+PlayerState::StateName Player::getState()
 {
-    return currentState;
+    return mCurrentState;
 }

@@ -2,14 +2,17 @@
 #include "GameCollision.h"
 #include "PlayerStandingState.h"
 #include "PlayerFallingState.h"
+#include "GameDefine.h"
 
 PlayerJumpingState::PlayerJumpingState(PlayerData *playerData)
 {
-    this->playerData = playerData;    
-    this->playerData->player->vy = PLAYER_MIN_JUMP_VELOCITY;
+    this->mPlayerData = playerData;
+    this->mPlayerData->player->SetVy(Define::PLAYER_MIN_JUMP_VELOCITY);
 
-    acceleratorY = 0.2;
-    acceleratorX = 0.06f;
+    acceleratorY = 5.0f;
+    acceleratorX = 6.0f;
+
+    noPressed = false;
 }
 
 
@@ -20,42 +23,38 @@ PlayerJumpingState::~PlayerJumpingState()
 
 void PlayerJumpingState::update(float dt)
 {
-    this->playerData->player->vy += acceleratorY;   
+    this->mPlayerData->player->AddVy(acceleratorY);   
 
-    if (playerData->player->vy >= 0)
+    if (mPlayerData->player->GetVy() >= 0)
     {
-        playerData->player->changeState(new PlayerFallingState(this->playerData), Player::Falling);
+        mPlayerData->player->SetState(new PlayerFallingState(this->mPlayerData));
 
         return;
     }
 
-    if (playerData->player->getMoveDirection() == Player::MoveToLeft)
+    if (noPressed)
     {
-        //player dang di chuyen sang ben trai        
-
-        if (playerData->player->vx < 0)
+        if (mPlayerData->player->getMoveDirection() == Player::MoveToLeft)
         {
-            this->playerData->player->vx += acceleratorX;
-
-            //doi state
-            if (playerData->player->vx > 0)
+            //player dang di chuyen sang ben trai      
+            if (mPlayerData->player->GetVx() < 0)
             {
-                playerData->player->vx = 0;
-            }            
+                this->mPlayerData->player->AddVx(acceleratorX);
+
+                if (mPlayerData->player->GetVx() > 0)
+                    this->mPlayerData->player->SetVx(0);
+            }
         }
-    }
-    else
-    {
-        //player dang di chuyen sang phai       
-        if (playerData->player->vx > 0)
+        else if (mPlayerData->player->getMoveDirection() == Player::MoveToRight)
         {
-            this->playerData->player->vx -= acceleratorX;
-
-            //doi state
-            if (playerData->player->vx < 0)
+            //player dang di chuyen sang phai   
+            if (mPlayerData->player->GetVx() > 0)
             {
-                playerData->player->vx = 0;
-            }                
+                this->mPlayerData->player->AddVx(-acceleratorX);
+
+                if (mPlayerData->player->GetVx() < 0)
+                    this->mPlayerData->player->SetVx(0);
+            }
         }
     }
 }
@@ -65,71 +64,77 @@ void PlayerJumpingState::handleKeyboard(std::map<int, bool> keys)
     if (keys[VK_RIGHT])
     {
         //di chuyen sang phai
-        if (this->playerData->player->vx < PLAYER_MAX_RUNNING_SPEED)
+        if (this->mPlayerData->player->GetVx() < Define::PLAYER_MAX_RUNNING_SPEED)
         {
-            this->playerData->player->vx += acceleratorX;
+            this->mPlayerData->player->AddVx(acceleratorX);
 
-            if (this->playerData->player->vx >= PLAYER_MAX_RUNNING_SPEED)
+            if (this->mPlayerData->player->GetVx() >= Define::PLAYER_MAX_RUNNING_SPEED)
             {
-                this->playerData->player->vx = PLAYER_MAX_RUNNING_SPEED;
+                this->mPlayerData->player->SetVx(Define::PLAYER_MAX_RUNNING_SPEED);
             }
         }
+
+        noPressed = false;
     }
     else if (keys[VK_LEFT])
     {
         //di chuyen sang trai
-        if (this->playerData->player->vx > -PLAYER_MAX_RUNNING_SPEED)
+        if (this->mPlayerData->player->GetVx() > -Define::PLAYER_MAX_RUNNING_SPEED)
         {
-            this->playerData->player->vx -= acceleratorX;
+            this->mPlayerData->player->AddVx(-acceleratorX);
 
-            if (this->playerData->player->vx <= -PLAYER_MAX_RUNNING_SPEED)
+            if (this->mPlayerData->player->GetVx() < -Define::PLAYER_MAX_RUNNING_SPEED)
             {
-                this->playerData->player->vx = -PLAYER_MAX_RUNNING_SPEED;
+                this->mPlayerData->player->SetVx(-Define::PLAYER_MAX_RUNNING_SPEED);
             }
         }
+
+        noPressed = false;
     }
     else
     {
-        //this->playerData->player->vx = 0;
+        noPressed = true;
     }
 }
 
 void PlayerJumpingState::onCollision(Entity *impactor, Entity::SideCollisions side, Entity::CollisionReturn data)
  {
+    GAMELOG("side: %d", side);
+
     switch (side)
     {
-    case Entity::Left: case Entity::TopLeft: case Entity::BottomLeft:
-            if (playerData->player->getMoveDirection() == Player::MoveToLeft)
-            {
-                this->playerData->player->vy = 0;
-                this->playerData->player->posY += (data.RegionCollision.bottom - data.RegionCollision.top);
-                this->playerData->player->posX += (data.RegionCollision.right - data.RegionCollision.left);
-                this->playerData->player->changeState(new PlayerFallingState(this->playerData), Player::Falling);
-            }
+        case Entity::Left:
+        {
+            this->mPlayerData->player->AddPosition(data.RegionCollision.right - data.RegionCollision.left, 0);
+            this->mPlayerData->player->SetVx(0);
+            break;
+        }     
 
-            return;
+        case Entity::Right:
+        {
+            this->mPlayerData->player->AddPosition(-(data.RegionCollision.right - data.RegionCollision.left), 0);
+            this->mPlayerData->player->SetVx(0);
+            break;
+        }
 
-    case Entity::Right: case Entity::TopRight: case Entity::BottomRight:
-            if (playerData->player->getMoveDirection() == Player::MoveToRight)
-            {
-                this->playerData->player->vy = 0;
-                this->playerData->player->posY += (data.RegionCollision.bottom - data.RegionCollision.top);
-                this->playerData->player->posX -= (data.RegionCollision.right - data.RegionCollision.left);
-                this->playerData->player->changeState(new PlayerFallingState(this->playerData), Player::Falling);
-            }
-            return;
+        case Entity::TopRight: case Entity::TopLeft: case Entity::Top:
+        {          
+            this->mPlayerData->player->AddPosition(0, data.RegionCollision.bottom - data.RegionCollision.top);            
+            this->mPlayerData->player->SetVy(0);
+            break;
+        }
 
-        case Entity::Top:
-            this->playerData->player->vy = 0;
-            this->playerData->player->posY += (data.RegionCollision.bottom - data.RegionCollision.top);
-            this->playerData->player->changeState(new PlayerFallingState(this->playerData), Player::Falling);
-            return;
-
-        case Entity::Bottom:
-            //this->playerData->player->changeState(new PlayerStandingState(this->playerData), Player::Standing);
-            return;
+        case Entity::BottomRight: case Entity::BottomLeft: case Entity::Bottom:
+        {
+            this->mPlayerData->player->AddPosition(0, -(data.RegionCollision.bottom - data.RegionCollision.top));
+        }
 
         default:
             break;
     }
+}
+
+PlayerState::StateName PlayerJumpingState::GetState()
+{
+    return PlayerState::Jumping;
 }

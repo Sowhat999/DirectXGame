@@ -3,8 +3,8 @@
 
 #include "Scene.h"
 #include "GameLog.h"
-#include "GameScene.h"
-
+#include "GameMap.h"
+#include "Player.h"
 
 class SceneGamePlay : public Scene
 {
@@ -26,10 +26,18 @@ public:
 
     void OnKeyDown(int keyCode);
     void OnKeyUp(int keyCode);
-   
+
+    void checkCollision();
+
 private:
-   GameScene               *mGameScene;
-   float angle;
+    void CheckCameraAndWorldMap();
+
+    float angle;
+    GameMap *mMap;
+    Camera *mCamera;
+    Player *mMario;
+
+    std::map<int, bool>     mKeyCodes;
 };
 
 #endif

@@ -13,7 +13,7 @@ public:
     
     GameCollision();
     //kiem tra va cham giua 2 hinh chu nhat
-    static Entity::CollisionReturn RectangleAndRectangle(RECT rect, RECT rect2);
+    static Entity::CollisionReturn RecteAndRect(RECT rect, RECT rect2);
 
     static bool isCollide(RECT rect1, RECT rect2);
 

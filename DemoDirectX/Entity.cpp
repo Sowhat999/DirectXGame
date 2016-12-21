@@ -3,7 +3,7 @@
 
 Entity::Entity()
 {
-    Tag = 0;
+    Tag = None;
 }
 
 D3DXVECTOR3 Entity::GetPosition()
@@ -23,44 +23,95 @@ RECT Entity::GetBound()
     return bound;
 }
 
-void Entity::onCollision(Entity *impactor, CollisionReturn data, Entity::SideCollisions side)
+void Entity::OnCollision(Entity *impactor, CollisionReturn data, Entity::SideCollisions side)
 {
     vx = 0, vy = 0;
 }
 
-void Entity::handleKeyboard(std::map<int, bool> keys)
+void Entity::Update(float dt)
 {
-
+    //velocity = pixel / s
+    posX += vx * dt;
+    posY += vy * dt;
 }
 
-void Entity::update(float dt)
+void Entity::SetPosition(float x, float y)
 {
-    posX += vx;
-    posY += vy;
+    SetPosition(D3DXVECTOR2(x, y));
 }
 
-void Entity::setPosition(float x, float y)
+void Entity::SetPosition(D3DXVECTOR2 pos)
 {
-    setPosition(D3DXVECTOR2(x, y));
+    SetPosition(D3DXVECTOR3(pos.x, pos.y, 0));
 }
 
-void Entity::setPosition(D3DXVECTOR2 pos)
-{
-    setPosition(D3DXVECTOR3(pos.x, pos.y, 0));
-}
-
-void Entity::setPosition(D3DXVECTOR3 pos)
+void Entity::SetPosition(D3DXVECTOR3 pos)
 {
     this->posX = pos.x;
     this->posY = pos.y; 
 }
 
-int Entity::getWidth()
+void Entity::AddPosition(D3DXVECTOR3 pos)
+{
+    this->SetPosition(this->GetPosition() + pos);
+}
+
+void Entity::AddPosition(D3DXVECTOR2 pos)
+{
+    AddPosition(D3DXVECTOR3(pos));
+}
+
+void Entity::AddPosition(float x, float y)
+{
+    AddPosition(D3DXVECTOR3(x, y, 0));
+}
+
+void Entity::SetWidth(int width)
+{
+    this->width = width;
+}
+
+int Entity::GetWidth()
 {
     return width;
 }
 
-int Entity::getHeight()
+void Entity::SetHeight(int height)
+{
+    this->height = height;
+}
+
+int Entity::GetHeight()
 {
     return height;
+}
+
+float Entity::GetVx()
+{
+    return vx;
+}
+
+void Entity::SetVx(float vx)
+{
+    this->vx = vx;
+}
+
+void Entity::AddVx(float vx)
+{
+    this->vx += vx;
+}
+
+float Entity::GetVy()
+{
+    return vy;
+}
+
+void Entity::SetVy(float vy)
+{
+    this->vy = vy;
+}
+
+void Entity::AddVy(float vy)
+{
+    this->vy += vy;
 }

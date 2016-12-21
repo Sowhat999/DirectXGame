@@ -12,6 +12,7 @@ Animation::Animation(const char* filePath, int totalFrame, int rows, int columns
 
 void Animation::InitWithAnimation(const char* filePath, int totalFrame, int rows, int columns, float timePerFrame, D3DCOLOR colorKey)
 {
+    //GAMELOG("animation: frame: %d, row: %d, column: %d, time: %f", totalFrame, rows, columns, timePerFrame);
     mSprite = new Sprite(filePath, NULL, 0, 0, colorKey);
     mCurrentColumn = 0;
     mCurrentRow = 0;
@@ -28,6 +29,9 @@ void Animation::InitWithAnimation(const char* filePath, int totalFrame, int rows
     mSprite->SetWidth(mFrameWidth);
     mSprite->SetHeight(mFrameHeight);
 
+    this->SetWidth(mFrameWidth);
+    this->SetHeight(mFrameHeight);
+
     mRect = new RECT();
     mRect->top = 0;
     mRect->left = 0;
@@ -38,22 +42,8 @@ void Animation::InitWithAnimation(const char* filePath, int totalFrame, int rows
 
 Animation::~Animation()
 {
-
-}
-
-D3DXVECTOR3 Animation::GetPosition()
-{
-    return mSprite->GetPosition();
-}
-
-void Animation::SetPosition(D3DXVECTOR3 pos)
-{
-    mSprite->SetPosition(pos);
-}
-
-void Animation::SetPosition(float x, float y)
-{
-    mSprite->SetPosition(D3DXVECTOR3(x, y, 0));
+    delete mSprite;
+    delete mRect;
 }
 
 void Animation::SetFlipVertical(bool flag)
@@ -78,7 +68,7 @@ void Animation::SetScale(D3DXVECTOR2 scale)
 
 float Animation::GetRotation()
 {
-    return mSprite->GetRotation();    
+    return mSprite->GetRotation();
 }
 
 void Animation::SetRotation(float rotation) // by radian
@@ -106,16 +96,6 @@ void Animation::SetTranslation(D3DXVECTOR2 translation)
     mSprite->SetTranslation(translation);
 }
 
-int Animation::getWidth()
-{
-    return mSprite->GetWidth();
-}
-
-int Animation::getHeight()
-{
-    return mSprite->GetHeight();
-}
-
 Sprite* Animation::GetSprite()
 {
     return mSprite;
@@ -123,6 +103,11 @@ Sprite* Animation::GetSprite()
 
 void Animation::Update(float dt)
 {
+    Entity::Update(dt);
+
+    if (mTotalFrame <= 1)
+        return;
+
     if (mCurrentTotalTime >= mTimePerFrame)
     {
         mCurrentTotalTime = 0;
@@ -134,7 +119,7 @@ void Animation::Update(float dt)
             mCurrentIndex = 0;
             mCurrentColumn = 0;
             mCurrentRow = 0;
-        }            
+        }
 
         if (mCurrentColumn >= mColumns)
         {
@@ -156,8 +141,31 @@ void Animation::Update(float dt)
     }
 }
 
-void Animation::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale ,
-    D3DXVECTOR2 transform , float angle, D3DXVECTOR2 rotationCenter, D3DXVECTOR2 scalingCenter, D3DXCOLOR colorKey)
+void Animation::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale,
+    D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXVECTOR2 scalingCenter, D3DXCOLOR colorKey)
 {
+
     mSprite->Draw(position, sourceRect, scale, transform, angle, rotationCenter, scalingCenter, colorKey);
+}
+
+void Animation::Draw(D3DXVECTOR2 transform)
+{
+    Draw(GetPosition(), nullptr, D3DXVECTOR2(), transform);
+}
+
+void Animation::SetPosition(D3DXVECTOR3 pos)
+{
+    Entity::SetPosition(pos);
+
+    mSprite->SetPosition(pos);
+}
+
+void Animation::SetPosition(float x, float y)
+{
+    SetPosition(D3DXVECTOR3(x, y, 0));
+}
+
+void Animation::SetPosition(D3DXVECTOR2 pos)
+{
+    SetPosition(D3DXVECTOR3(pos));
 }

@@ -1,67 +1,7 @@
-﻿Build started 13-Jul-16 3:05:59 PM.
-     1>Project "C:\Users\locth\Documents\GitHub\DirectXGame\DemoDirectX\DemoDirectX.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _CRT_SECURE_NO_WARNINGS /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gz /TP /analyze- /errorReport:prompt PlayerStandingState.cpp
-         PlayerStandingState.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.exe" /INCREMENTAL /NOLOGO d3dx9.lib d3d9.lib dxguid.lib dinput8.lib zlib.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.lib" /MACHINE:X86 Debug\Animation.obj
-         Debug\Brick.obj
-         Debug\BrickGold.obj
-         Debug\Camera.obj
-         Debug\Enemy.obj
-         Debug\EnemyData.obj
-         Debug\EnemyMushRoom.obj
-         Debug\EnemyState.obj
-         Debug\Entity.obj
-         Debug\Game.obj
-         Debug\GameCollision.obj
-         Debug\GameConverter.obj
-         Debug\GameDebugDraw.obj
-         Debug\GameGlobal.obj
-         Debug\GameInput.obj
-         Debug\GameLog.obj
-         Debug\GameMap.obj
-         Debug\GameScene.obj
-         Debug\GameTime.obj
-         Debug\main.obj
-         Debug\base64.obj
-         Debug\miniz.obj
-         Debug\tinyxml2.obj
-         Debug\TmxEllipse.obj
-         Debug\TmxImage.obj
-         Debug\TmxImageLayer.obj
-         Debug\TmxLayer.obj
-         Debug\TmxMap.obj
-         Debug\TmxObject.obj
-         Debug\TmxObjectGroup.obj
-         Debug\TmxPolygon.obj
-         Debug\TmxPolyline.obj
-         Debug\TmxPropertySet.obj
-         Debug\TmxTerrain.obj
-         Debug\TmxTerrainArray.obj
-         Debug\TmxTile.obj
-         Debug\TmxTileLayer.obj
-         Debug\TmxTileOffset.obj
-         Debug\TmxTileset.obj
-         Debug\TmxUtil.obj
-         Debug\Mario.obj
-         Debug\Player.obj
-         Debug\PlayerData.obj
-         Debug\PlayerFallingState.obj
-         Debug\PlayerJumpingState.obj
-         Debug\PlayerRunningState.obj
-         Debug\PlayerStandingState.obj
-         Debug\PlayerState.obj
-         Debug\QuadTree.obj
-         Debug\Scene.obj
-         Debug\SceneGamePlay.obj
-         Debug\SceneManager.obj
-         Debug\Sprite.obj
-         Debug\TestScene.obj
-         Debug\TransitionScanDown.obj
-         DemoDirectX.vcxproj -> C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.exe
-     1>Done Building Project "C:\Users\locth\Documents\GitHub\DirectXGame\DemoDirectX\DemoDirectX.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:03.48
+﻿  PlayerJumpingState.cpp
+c:\users\locth\documents\github\directxgame\demodirectx\playerjumpingstate.cpp(108): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+c:\users\locth\documents\github\directxgame\demodirectx\playerjumpingstate.cpp(115): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+c:\users\locth\documents\github\directxgame\demodirectx\playerjumpingstate.cpp(122): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+c:\users\locth\documents\github\directxgame\demodirectx\playerjumpingstate.cpp(129): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  DemoDirectX.vcxproj -> C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.exe
+  DemoDirectX.vcxproj -> C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.pdb (Full PDB)

@@ -10,25 +10,11 @@
 #include "PlayerState.h"
 #include "PlayerRunningState.h"
 
-const float PLAYER_MAX_JUMP_VELOCITY = 8.0f; //van toc nhay lon nhat
-const float PLAYER_MIN_JUMP_VELOCITY = -8.0f; //van toc nhay thap nhat
-const float PLAYER_MAX_RUNNING_SPEED = 3.2f; //toc do chay nhanh nhat cua player
-const float PLAYER_BOTTOM_RANGE_FALLING = 8.0f; // do dai va cham voi bottom neu nhu va cham bottom nho hon thi player se bi roi xuong
-
 class Player : public Entity
 {
 public:
     Player();
     ~Player();
-
-    enum PlayerStates
-    {
-        Standing, 
-        Running,
-        Falling,
-        Jumping,
-        Die
-    };
 
     enum MoveDirection
     {
@@ -37,39 +23,51 @@ public:
         None //dung im
     };
 
-    void setCamera(Camera *camera);
+    void SetCamera(Camera *camera);
 
-    void update(float dt);
-
-    void handleKeyboard(std::map<int, bool> keys);
+    void Update(float dt);
 
     void Draw(D3DXVECTOR3 position = D3DXVECTOR3(), RECT *sourceRect = NULL, D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXVECTOR2 scalingCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
 
-    void changeState(PlayerState *newState, Player::PlayerStates stateName);
+    void SetState(PlayerState *newState);
 
-    void onCollision(Entity *impactor, Entity::CollisionReturn data, Entity::SideCollisions side);
+    void OnCollision(Entity *impactor, Entity::CollisionReturn data, Entity::SideCollisions side);
 
-    void onNoCollisionWithBottom();
+    void OnNoCollisionWithBottom();
 
     MoveDirection getMoveDirection();
 
-    Player::PlayerStates getState();
-
     RECT GetBound();     
+
+    PlayerState::StateName Player::getState();
+
+    //xu ly input
+    //gom 256 key tuong ung true = dang dc nhan, false = khong dc nhan
+    void HandleKeyboard(std::map<int, bool> keys);
+
+    void OnKeyPressed(int key);
+
+    void OnKeyUp(int key);
+
+    bool allowMoveLeft;
+    bool allowMoveRight;
 
 protected:
 
     Camera      *mCamera;
 
-    PlayerData *playerData;
+    PlayerData *mPlayerData;
 
-    Animation   *currentAnimation,
-                *animationStanding,
-                *animationRunning,
-                *animationJumping;
+    Animation   *mCurrentAnimation,
+                *mAnimationStanding,
+                *mAnimationRunning,
+                *mAnimationJumping;
 
-    void changeAnimation(PlayerStates state);
+    void changeAnimation(PlayerState::StateName state);
 
-    PlayerStates currentState;
+    PlayerState::StateName mCurrentState;
+
+    //chi cho phep jump khi nhan nhim space, muon nhay lai phai tha phim space roi nhan lai
+    bool allowJump;
 };
 

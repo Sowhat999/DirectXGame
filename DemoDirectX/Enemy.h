@@ -11,7 +11,7 @@
 #include "EnemyData.h"
 #include "EnemyState.h"
 
-class Enemy : public Animation, public Entity
+class Enemy : public Animation
 {
 public:    
     enum EnemyStates
