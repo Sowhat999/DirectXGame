@@ -35,23 +35,11 @@ VertexData vertexData[] =
     { D3DXVECTOR3(1.0f, -1.0f, 0.0f), D3DCOLOR_XRGB(0, 0, 0) }
 };
 
-//VertexData vertexData[] =
-//{
-//    //  x     y     z       color
-//    { D3DXVECTOR3(0.0f, 1.0f, 0.0f), D3DCOLOR_XRGB(0, 0, 0) },
-//    { D3DXVECTOR3(0.0f, 0.0f, 0.0f), D3DCOLOR_XRGB(0, 0, 0) },
-//    { D3DXVECTOR3(1.0f, 1.0f, 0.0f), D3DCOLOR_XRGB(0, 0, 0) },
-//    { D3DXVECTOR3(1.0f, 0.0f, 0.0f), D3DCOLOR_XRGB(0, 0, 0) }
-//};
-
-//
-//LPDIRECT3DTEXTURE9 pTexture_0 = NULL;
-//LPDIRECT3DTEXTURE9 pTexture_1 = NULL;
-
 TestScene::TestScene()
 {
-    this->mBackColor = 0x54acd2;
+    mBackColor = 0x54acd2;
 
+    LoadContent();
 }
 
 TestScene::~TestScene()
@@ -60,8 +48,8 @@ TestScene::~TestScene()
 
 void TestScene::LoadContent()
 {
-    debugDraw = new GameDebugDraw(GameGlobal::GetCurrentSpriteHandler());
-    drawBezier = new GameDebugDraw(GameGlobal::GetCurrentSpriteHandler());
+    debugDraw = new GameDebugDraw();
+    drawBezier = new GameDebugDraw();
     drawBezier->setLineSize(1.6f);
     debugDraw->setLineSize(3);
 
@@ -104,15 +92,8 @@ void TestScene::initEffect()
     LPD3DXBUFFER bufferErrors = NULL;
     HRESULT hr;
 
-    //D3DXMatrixIdentity(&world);
-    //D3DXMatrixIdentity(&view);
-    //D3DXMatrixIdentity(&proj);
-
-    //D3DXMatrixPerspectiveFovLH(&proj, D3DXToRadian(40.0f), (float)GameGlobal::GetWidth() / (float)GameGlobal::GetHeight(), 0.0f, 100.0f);
-
     unsigned int vertexDataSize = 4 * sizeof(VertexData);
 
-    //create vertex buffer
     GameGlobal::GetCurrentDevice()->CreateVertexBuffer(vertexDataSize, D3DUSAGE_WRITEONLY, D3DFVF_CUSTOMVERTEX, 
                                                         D3DPOOL_DEFAULT, &vertexBuffer, 0);
 
@@ -122,16 +103,6 @@ void TestScene::initEffect()
     vertexBuffer->Unlock();
 
     hr = D3DXCreateEffectFromFileA(GameGlobal::GetCurrentDevice(), "Empty.fx", 0, 0, 0, 0, &effect, &bufferErrors);
-
-    //D3DXMatrixTranslation(&view, 0, 0, 2.75);
-    //D3DXMATRIX matrix = world * view * proj;
-    //effect->SetMatrix("WorldViewProj", &(world * view * proj));
-
-    //D3DXCreateTexture(GameGlobal::GetCurrentDevice(), GameGlobal::GetWidth(), GameGlobal::GetHeight(), D3DX_DEFAULT,
-    //                        D3DUSAGE_RENDERTARGET, D3DFMT_A8B8G8R8, D3DPOOL_DEFAULT, &texture0);
-
-    //D3DXCreateTexture(GameGlobal::GetCurrentDevice(), GameGlobal::GetWidth(), GameGlobal::GetHeight(), D3DX_DEFAULT,
-    //                        D3DUSAGE_RENDERTARGET, D3DFMT_A8B8G8R8, D3DPOOL_DEFAULT, &texture1);
 
     D3DXCreateTextureFromFileA(GameGlobal::GetCurrentDevice(), "valve.png", &texture0);
     D3DXCreateTextureFromFileA(GameGlobal::GetCurrentDevice(), "hungtrung.png", &texture1);  
@@ -174,8 +145,6 @@ void TestScene::Update(float dt)
             sprites.at(i)->SetRotation(acos(dir.x) * (abs(dir.y) / dir.y));
         }        
 
-        //GAMELOG("x: %f ; y: %f ; rotation: %f", dir.x, dir.y, D3DXToDegree(sprite->GetRotation()));
-
         for (size_t i = 0; i < numSprite; i++)
         {
             sprites.at(i)->SetPosition(D3DXVECTOR3(vec.x + i * xDistance, vec.y + i * yDistance, 0));
@@ -208,7 +177,6 @@ void TestScene::Draw()
     for (size_t i = 0; i < numSprite; i++)
     {
         sprites.at(i)->Draw();
-        //GAMELOG("x: %f; y: %f", sprites.at(i)->GetPosition().x, sprites.at(i)->GetPosition().y);
     }
 
     if (isDrawBezier)
@@ -238,21 +206,12 @@ void TestScene::Draw()
 
 void TestScene::DoEndScene()
 {
-    //IDirect3DSurface9 *surface;
-    //texture0->GetSurfaceLevel(0, &surface);
-    //D3DXLoadSurfaceFromSurface(surface, NULL, NULL, GameGlobal::backSurface, NULL, NULL, D3DX_FILTER_NONE, 0);
-    //GameGlobal::GetCurrentDevice()->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 0.0, 0);
-    //surface->Release();
-
     D3DXMATRIX mtxViewProj;
     D3DXMatrixIdentity(&mtxViewProj);
     mtxViewProj._11 = 2.0;
     mtxViewProj._22 = -2.0;
     mtxViewProj._41 = 1.0;
     mtxViewProj._42 = 1.0;
-
-    //D3DXMatrixOrthoOffCenterLH(&mtxViewProj, 0.5f, GameGlobal::GetWidth() + 0.5f, 0.5f, GameGlobal::GetHeight() + 0.5f, 0, 0);
-
 
     UINT numpasses = 0;
     effect->Begin(&numpasses, 0);

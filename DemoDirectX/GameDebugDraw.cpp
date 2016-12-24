@@ -1,9 +1,9 @@
 #include "GameDebugDraw.h"
 
 
-GameDebugDraw::GameDebugDraw(LPD3DXSPRITE spriteHandler)
+GameDebugDraw::GameDebugDraw()
 {
-    mSpriteHandler = spriteHandler;
+    mSpriteHandler = GameGlobal::GetCurrentSpriteHandler();
     mSpriteHandler->GetDevice(&mddv);
     D3DXCreateLine(mddv, &LineDraw);
     LineDraw->SetWidth(5);
@@ -13,6 +13,7 @@ GameDebugDraw::GameDebugDraw(LPD3DXSPRITE spriteHandler)
 
 GameDebugDraw::~GameDebugDraw()
 {
+    
 }
 
 void GameDebugDraw::Draw()

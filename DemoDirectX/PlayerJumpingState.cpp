@@ -63,6 +63,8 @@ void PlayerJumpingState::handleKeyboard(std::map<int, bool> keys)
 {
     if (keys[VK_RIGHT])
     {
+        mPlayerData->player->SetReverse(false);
+
         //di chuyen sang phai
         if (this->mPlayerData->player->GetVx() < Define::PLAYER_MAX_RUNNING_SPEED)
         {
@@ -78,6 +80,8 @@ void PlayerJumpingState::handleKeyboard(std::map<int, bool> keys)
     }
     else if (keys[VK_LEFT])
     {
+        mPlayerData->player->SetReverse(true);
+
         //di chuyen sang trai
         if (this->mPlayerData->player->GetVx() > -Define::PLAYER_MAX_RUNNING_SPEED)
         {
@@ -99,8 +103,6 @@ void PlayerJumpingState::handleKeyboard(std::map<int, bool> keys)
 
 void PlayerJumpingState::onCollision(Entity *impactor, Entity::SideCollisions side, Entity::CollisionReturn data)
  {
-    GAMELOG("side: %d", side);
-
     switch (side)
     {
         case Entity::Left:

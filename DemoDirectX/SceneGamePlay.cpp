@@ -1,9 +1,12 @@
 ﻿#include "SceneGamePlay.h"
-
+#include "SceneManager.h"
+#include "DemoScene.h"
+#include "Transition\TransitionCircleScan.h"
+#include "Sound.h"
 
 SceneGamePlay::SceneGamePlay()
 {
-
+    LoadContent();
 }
 
 SceneGamePlay::~SceneGamePlay()
@@ -22,27 +25,31 @@ void SceneGamePlay::LoadContent()
     mMap->SetCamera(mCamera);
     mMario->SetPosition(mCamera->GetPosition());
     mMario->SetCamera(mCamera);
+
+    Sound::getInstance()->loadSound("Resources/man1.wav", "man1");
+    Sound::getInstance()->play("man1", false, 1);
+    //debug = new GameDebugDraw();
 }
 
 void SceneGamePlay::checkCollision()
 {
     float widthBottom = 0;
+    listCollision.clear();
 
-    std::vector<Entity*> list;
+    mMap->GetQuadTree()->getEntitiesCollideAble(listCollision, mMario);
+    //mMap->GetQuadTree()->getAllEntities(listCollision);
 
-    mMap->GetQuadTree()->getAllEntities(list);
-
-    for (size_t i = 0; i < list.size(); i++)
+    for (size_t i = 0; i < listCollision.size(); i++)
     {
-        Entity::CollisionReturn r = GameCollision::RecteAndRect(mMario->GetBound(), list.at(i)->GetBound());
+        Entity::CollisionReturn r = GameCollision::RecteAndRect(mMario->GetBound(), listCollision.at(i)->GetBound());
 
         if (r.IsCollided)
         {
             Entity::SideCollisions sidePlayer = GameCollision::getSideCollision(mMario, r);
-            Entity::SideCollisions sideImpactor = GameCollision::getSideCollision(list.at(i), r);
+            Entity::SideCollisions sideImpactor = GameCollision::getSideCollision(listCollision.at(i), r);
             
-            mMario->OnCollision(list.at(i), r, sidePlayer);
-            list.at(i)->OnCollision(mMario, r, sideImpactor);
+            mMario->OnCollision(listCollision.at(i), r, sidePlayer);
+            listCollision.at(i)->OnCollision(mMario, r, sideImpactor);
 
             if (sidePlayer == Entity::Bottom || sidePlayer == Entity::BottomLeft || sidePlayer == Entity::BottomRight)
             {
@@ -74,7 +81,15 @@ void SceneGamePlay::Update(float dt)
 void SceneGamePlay::Draw()
 {
     mMap->Draw();
+
     mMario->Draw();
+
+    //for (auto entity : listCollision)
+    //{
+    //    debug->DrawRect(entity->GetBound(), mCamera);
+    //}
+
+    //drawQuadTree(mMap->GetQuadTree());
 }
 
 void SceneGamePlay::OnKeyDown(int keyCode)
@@ -89,6 +104,11 @@ void SceneGamePlay::OnKeyUp(int keyCode)
     mKeyCodes[keyCode] = false;
 
     mMario->OnKeyUp(keyCode);
+}
+
+void SceneGamePlay::OnMouseDown(float x, float y)
+{
+    SceneManager::GetInstance()->ReplaceScene(new DemoScene(), new TransitionCircleScan());
 }
 
 void SceneGamePlay::CheckCameraAndWorldMap()
@@ -119,4 +139,25 @@ void SceneGamePlay::CheckCameraAndWorldMap()
         //luc nay cham day cua the gioi thuc
         mCamera->SetPosition(mCamera->GetPosition().x, mMap->GetHeight() - mCamera->GetHeight() / 2);
     }
+}
+
+void SceneGamePlay::drawQuadTree(QuadTree * quadtree)
+{/*
+    if (quadtree->Nodes)
+    {
+        for (size_t i = 0; i < 4; i++)
+        {
+            drawQuadTree(quadtree->Nodes[i]);
+        }
+    }
+
+    debug->DrawRect(quadtree->Bound, mCamera);
+
+    if (quadtree->Nodes)
+    {
+        for (size_t i = 0; i < 4; i++)
+        {
+            debug->DrawRect(quadtree->Nodes[i]->Bound, mCamera);
+        }
+    }*/
 }

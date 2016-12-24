@@ -22,7 +22,7 @@ public:
 
     virtual void Update(float dt);
 
-    void Draw(D3DXVECTOR3 position = D3DXVECTOR3(), RECT *sourceRect = NULL, D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXVECTOR2 scalingCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
+    void Draw(D3DXVECTOR3 position = D3DXVECTOR3(), RECT sourceRect = RECT(), D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
     void Draw(D3DXVECTOR2 transform);
 
     virtual void SetPosition(D3DXVECTOR3 pos);
@@ -66,8 +66,7 @@ protected:
         mCurrentTotalTime; //tong thoi gian hien tai de thuc hien timeperframe
 
     Sprite                      *mSprite;
-    D3DXMATRIX                  mMatrix;
-    RECT                        *mRect;
+    RECT                        mRect;
 };
 
 #endif

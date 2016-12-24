@@ -30,6 +30,24 @@ void Scene::Draw()
 
 }
 
+void Scene::Render()
+{
+    auto device = GameGlobal::GetCurrentDevice();
+
+    //begin render
+    device->Clear(0, NULL, D3DCLEAR_TARGET, this->mBackColor, 0.0f, 0);
+    device->BeginScene();
+
+    //draw
+    GameGlobal::GetCurrentSpriteHandler()->Begin(D3DXSPRITE_ALPHABLEND);
+    Draw();
+    GameGlobal::GetCurrentSpriteHandler()->End();
+
+    //end render
+    device->EndScene();
+    device->Present(NULL, NULL, NULL, NULL);        
+}
+
 void Scene::OnKeyDown(int keyCode)
 {
 

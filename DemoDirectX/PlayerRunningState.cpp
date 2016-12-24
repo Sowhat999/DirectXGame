@@ -9,6 +9,9 @@ PlayerRunningState::PlayerRunningState(PlayerData *playerData)
     this->mPlayerData = playerData;
     
     acceleratorX = 8.0f;
+
+    this->mPlayerData->player->allowMoveLeft = true;
+    this->mPlayerData->player->allowMoveRight = true;
 }
 
 
@@ -27,6 +30,8 @@ void PlayerRunningState::handleKeyboard(std::map<int, bool> keys)
     {
         if (mPlayerData->player->allowMoveRight)
         {
+            mPlayerData->player->SetReverse(false);
+
             //di chuyen sang phai
             if (this->mPlayerData->player->GetVx() < Define::PLAYER_MAX_RUNNING_SPEED)
             {
@@ -43,6 +48,8 @@ void PlayerRunningState::handleKeyboard(std::map<int, bool> keys)
     {
         if (mPlayerData->player->allowMoveLeft)
         {
+            mPlayerData->player->SetReverse(true);
+
             //di chuyen sang trai
             if (this->mPlayerData->player->GetVx() > -Define::PLAYER_MAX_RUNNING_SPEED)
             {
@@ -66,8 +73,6 @@ void PlayerRunningState::onCollision(Entity *impactor, Entity::SideCollisions si
 {
     //lay phia va cham so voi player
     //GameCollision::SideCollisions side = GameCollision::getSideCollision(this->mPlayerData->player, data);
-    this->mPlayerData->player->allowMoveLeft = true;
-    this->mPlayerData->player->allowMoveRight = true;
 
     switch (side)
     {
@@ -104,11 +109,6 @@ void PlayerRunningState::onCollision(Entity *impactor, Entity::SideCollisions si
             this->mPlayerData->player->AddPosition(0, -(data.RegionCollision.bottom - data.RegionCollision.top));
 
             this->mPlayerData->player->SetVy(0);
-
-            if (data.RegionCollision.right - data.RegionCollision.left <= Define::PLAYER_BOTTOM_RANGE_FALLING)
-            {
-                //this->mPlayerData->player->SetState(new PlayerFallingState(mPlayerData));
-            }
 
             return;
         }

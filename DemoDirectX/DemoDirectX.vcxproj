@@ -89,6 +89,7 @@
     <ClCompile Include="BrickGold.cpp" />
     <ClCompile Include="BrickNormal.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DemoScene.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyData.cpp" />
     <ClCompile Include="EnemyMushRoom.cpp" />
@@ -102,7 +103,6 @@
     <ClCompile Include="GameInput.cpp" />
     <ClCompile Include="GameLog.cpp" />
     <ClCompile Include="GameMap.cpp" />
-    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapReader\base64.cpp" />
@@ -136,9 +136,14 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneGamePlay.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="TransitionScanDown.cpp" />
+    <ClCompile Include="Transition\SceneTransition.cpp" />
+    <ClCompile Include="Transition\Shader.cpp" />
+    <ClCompile Include="Transition\TransitionCircleScan.cpp" />
+    <ClCompile Include="Transition\TransitionEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -146,6 +151,7 @@
     <ClInclude Include="BrickGold.h" />
     <ClInclude Include="BrickNormal.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="DemoScene.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyData.h" />
     <ClInclude Include="EnemyMushRoom.h" />
@@ -160,7 +166,6 @@
     <ClInclude Include="GameInput.h" />
     <ClInclude Include="GameLog.h" />
     <ClInclude Include="GameMap.h" />
-    <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameStructs.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="IInput.h" />
@@ -199,13 +204,17 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneGamePlay.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="TransitionScanDown.h" />
+    <ClInclude Include="Transition\SceneTransition.h" />
+    <ClInclude Include="Transition\Shader.h" />
+    <ClInclude Include="Transition\TransitionCircleScan.h" />
+    <ClInclude Include="Transition\TransitionEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="MapReader\Tmx.h.in" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

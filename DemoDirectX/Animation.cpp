@@ -13,7 +13,7 @@ Animation::Animation(const char* filePath, int totalFrame, int rows, int columns
 void Animation::InitWithAnimation(const char* filePath, int totalFrame, int rows, int columns, float timePerFrame, D3DCOLOR colorKey)
 {
     //GAMELOG("animation: frame: %d, row: %d, column: %d, time: %f", totalFrame, rows, columns, timePerFrame);
-    mSprite = new Sprite(filePath, NULL, 0, 0, colorKey);
+    mSprite = new Sprite(filePath);
     mCurrentColumn = 0;
     mCurrentRow = 0;
     mTimePerFrame = timePerFrame;
@@ -32,18 +32,16 @@ void Animation::InitWithAnimation(const char* filePath, int totalFrame, int rows
     this->SetWidth(mFrameWidth);
     this->SetHeight(mFrameHeight);
 
-    mRect = new RECT();
-    mRect->top = 0;
-    mRect->left = 0;
-    mRect->right = mSprite->GetWidth() / mColumns;
-    mRect->bottom = mSprite->GetHeight() / mRows;
+    mRect.top = 0;
+    mRect.left = 0;
+    mRect.right = mSprite->GetWidth() / mColumns;
+    mRect.bottom = mSprite->GetHeight() / mRows;
     mSprite->SetSourceRect(mRect);
 }
 
 Animation::~Animation()
 {
     delete mSprite;
-    delete mRect;
 }
 
 void Animation::SetFlipVertical(bool flag)
@@ -130,10 +128,12 @@ void Animation::Update(float dt)
                 mCurrentRow = 0;
         }
 
-        mRect->left = mCurrentColumn * mFrameWidth;
-        mRect->right = mRect->left + mFrameWidth;
-        mRect->top = mCurrentRow * mFrameHeight;
-        mRect->bottom = mRect->top + mFrameHeight;
+        mRect.left = mCurrentColumn * mFrameWidth;
+        mRect.right = mRect.left + mFrameWidth;
+        mRect.top = mCurrentRow * mFrameHeight;
+        mRect.bottom = mRect.top + mFrameHeight;
+
+        mSprite->SetSourceRect(mRect);
     }
     else
     {
@@ -141,16 +141,16 @@ void Animation::Update(float dt)
     }
 }
 
-void Animation::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale,
-    D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXVECTOR2 scalingCenter, D3DXCOLOR colorKey)
+void Animation::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale,
+    D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
 {
 
-    mSprite->Draw(position, sourceRect, scale, transform, angle, rotationCenter, scalingCenter, colorKey);
+    mSprite->Draw(position, sourceRect, scale, transform, angle, rotationCenter, colorKey);
 }
 
 void Animation::Draw(D3DXVECTOR2 transform)
 {
-    Draw(GetPosition(), nullptr, D3DXVECTOR2(), transform);
+    Draw(GetPosition(), RECT(), D3DXVECTOR2(), transform);
 }
 
 void Animation::SetPosition(D3DXVECTOR3 pos)

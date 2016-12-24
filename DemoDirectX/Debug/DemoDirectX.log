@@ -1,7 +1,13 @@
-﻿  PlayerJumpingState.cpp
-c:\users\locth\documents\github\directxgame\demodirectx\playerjumpingstate.cpp(108): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\locth\documents\github\directxgame\demodirectx\playerjumpingstate.cpp(115): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\locth\documents\github\directxgame\demodirectx\playerjumpingstate.cpp(122): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\locth\documents\github\directxgame\demodirectx\playerjumpingstate.cpp(129): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+﻿  SceneGamePlay.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+c:\users\locth\documents\github\directxgame\demodirectx\scenegameplay.cpp(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\locth\documents\github\directxgame\demodirectx\scenegameplay.cpp(56): warning C4244: 'initializing': conversion from 'LONG' to 'float', possible loss of data
+c:\users\locth\documents\github\directxgame\demodirectx\scenegameplay.cpp(122): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\locth\documents\github\directxgame\demodirectx\scenegameplay.cpp(128): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\locth\documents\github\directxgame\demodirectx\scenegameplay.cpp(134): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\locth\documents\github\directxgame\demodirectx\scenegameplay.cpp(140): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Game.cpp
   DemoDirectX.vcxproj -> C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.exe
   DemoDirectX.vcxproj -> C:\Users\locth\Documents\GitHub\DirectXGame\Debug\DemoDirectX.pdb (Full PDB)

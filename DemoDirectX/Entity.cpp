@@ -18,7 +18,7 @@ RECT Entity::GetBound()
     bound.left = posX - width / 2;
     bound.right = posX + width / 2;
     bound.top = posY - height / 2;
-    bound.bottom = posY +height / 2;
+    bound.bottom = posY + height / 2;
 
     return bound;
 }

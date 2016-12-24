@@ -36,17 +36,17 @@ void Enemy::setCamera(Camera *camera)
     this->mCamera = camera;
 }
 
-void Enemy::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXVECTOR2 scalingCenter, D3DXCOLOR colorKey)
+void Enemy::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
 {
     if (mCamera)
     {
         D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
                                         GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
 
-        Animation::Draw(position, sourceRect, scale, trans, angle, rotationCenter, scalingCenter, colorKey);
+        Animation::Draw(position, sourceRect, scale, trans, angle, rotationCenter, colorKey);
     }
     else
-        Animation::Draw(position, sourceRect, scale, transform, angle, rotationCenter, scalingCenter, colorKey);
+        Animation::Draw(position, sourceRect, scale, transform, angle, rotationCenter, colorKey);
 }
 
 void Enemy::SetGravity(D3DXVECTOR3 gravity)

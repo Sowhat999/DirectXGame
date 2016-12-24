@@ -14,6 +14,7 @@ public:
     virtual void Update(float dt);
     virtual void LoadContent();
     virtual void Draw();
+    virtual void Render();
     //duoc goi sau khi Device->EndScene();
     virtual void DoEndScene();
     virtual void OnKeyDown(int keyCode);

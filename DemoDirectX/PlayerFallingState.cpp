@@ -8,7 +8,7 @@ PlayerFallingState::PlayerFallingState(PlayerData *playerData)
 {
     this->mPlayerData = playerData;
     acceleratorY = 10.0f;
-    acceleratorX = 6.0f;
+    acceleratorX = 3.0f;
 
     if (this->mPlayerData->player->GetVx() == 0)
     {
@@ -39,6 +39,8 @@ void PlayerFallingState::handleKeyboard(std::map<int, bool> keys)
 {
     if (keys[VK_RIGHT])
     {
+        mPlayerData->player->SetReverse(false);
+
         isLeftOrRightKeyPressed = true;
         //di chuyen sang phai
         if (this->mPlayerData->player->GetVx() < Define::PLAYER_MAX_RUNNING_SPEED)
@@ -53,6 +55,8 @@ void PlayerFallingState::handleKeyboard(std::map<int, bool> keys)
     }
     else if (keys[VK_LEFT])
     {
+        mPlayerData->player->SetReverse(true);
+
         isLeftOrRightKeyPressed = true;
         //di chuyen sang trai
         if (this->mPlayerData->player->GetVx() > -Define::PLAYER_MAX_RUNNING_SPEED)

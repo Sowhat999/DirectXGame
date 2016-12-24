@@ -15,19 +15,19 @@ class QuadTree
 {
 public:
 
-    QuadTree();
     QuadTree(int level, RECT bound);
     ~QuadTree();
     void Clear();
     void insertEntity(Entity *entity);
     QuadTree **Nodes;
-    std::vector<Entity*> ListEntity; //danh sach cac phan tu co trong vung va cham (Bound)
+    std::vector<Entity*> mListEntity; //danh sach cac phan tu co trong vung va cham (Bound)
     
     //lay danh sach nhung Entity co kha nang xay ra va cham
     void getEntitiesCollideAble(std::vector<Entity*> &entitiesOut,Entity *entity); // tra ve danh sach cac phan tu nam trong vung va cham
     void getAllEntities(std::vector<Entity*> &entitiesOut);
     int getTotalEntities();
     static int TotalCallBackCall;
+    static void debugConsole(QuadTree *tree);
 
     RECT Bound;
 

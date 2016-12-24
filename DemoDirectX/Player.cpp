@@ -15,8 +15,6 @@ Player::Player()
     this->vy = 0;
     this->SetState(new PlayerFallingState(this->mPlayerData));
 
-    allowMoveLeft = true;
-    allowMoveRight = true;
     allowJump = true;
 }
 
@@ -66,19 +64,27 @@ void Player::OnKeyUp(int key)
         allowJump = true;
 }
 
+void Player::SetReverse(bool flag)
+{
+    mCurrentReverse = flag;
+}
+
 void Player::SetCamera(Camera *camera)
 {
     this->mCamera = camera;
 }
 
-void Player::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXVECTOR2 scalingCenter, D3DXCOLOR colorKey)
+void Player::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
 {
     D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
                                         GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
 
+    mCurrentAnimation->SetFlipVertical(mCurrentReverse);
+    mCurrentAnimation->SetPosition(this->GetPosition());
+
     if (mCamera)
     {
-        mCurrentAnimation->Draw(D3DXVECTOR3(posX, posY, 0), sourceRect, scale, trans, angle, rotationCenter, scalingCenter, colorKey);
+        mCurrentAnimation->Draw(D3DXVECTOR3(posX, posY, 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
     }
     else
     {
@@ -88,6 +94,9 @@ void Player::Draw(D3DXVECTOR3 position, RECT *sourceRect, D3DXVECTOR2 scale, D3D
 
 void Player::SetState(PlayerState *newState)
 {
+    allowMoveLeft = true;
+    allowMoveRight = true;
+
     delete this->mPlayerData->state;
 
     this->mPlayerData->state = newState;

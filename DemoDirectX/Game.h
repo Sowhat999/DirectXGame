@@ -5,16 +5,11 @@
 #include <Windows.h>
 #include <dinput.h>
 
-#include "Sprite.h"
 #include "GameLog.h"
-#include "IInput.h"
 #include "GameInput.h"
 #include "GameTime.h"
-#include "Animation.h"
 #include "GameMap.h"
 #include "SceneManager.h"
-#include "SceneGamePlay.h"
-#include "TestScene.h"
 
 #define KEYBOARD_BUFFERD_SIZE 1024
 

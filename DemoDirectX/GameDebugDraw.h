@@ -9,7 +9,7 @@
 class GameDebugDraw 
 {
 public:
-    GameDebugDraw(LPD3DXSPRITE spriteHandler);
+    GameDebugDraw();
     void Draw();
     void DrawLine(D3DXVECTOR2 lines[], int count);
     void DrawRect(RECT rect, Camera *camera = nullptr);

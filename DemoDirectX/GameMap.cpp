@@ -39,8 +39,15 @@ GameMap::~GameMap()
 void GameMap::LoadMap(char* filePath)
 {
     mMap = new Tmx::Map();
-    mQuadTree = new QuadTree();
     mMap->ParseFile(filePath);
+
+    RECT r;
+    r.left = 0;
+    r.top = 0;
+    r.right = this->GetWidth();
+    r.bottom = this->GetHeight();
+
+    mQuadTree = new QuadTree(1, r);
 
     for (size_t i = 0; i < mMap->GetNumTilesets(); i++)
     {
@@ -143,10 +150,11 @@ void GameMap::LoadMap(char* filePath)
             entity->Tag = Entity::EntityTypes::Static;
 
             mQuadTree->insertEntity(entity);
-
         }
     }
 #pragma endregion
+
+    QuadTree::debugConsole(mQuadTree->Nodes[0]);
 }
 
 void GameMap::SetCamera(Camera* camera)
@@ -229,8 +237,6 @@ void GameMap::Draw()
 
         if (!layer->IsVisible())
         {
-            layer = nullptr;
-            delete layer;
             continue;
         }
 
@@ -283,7 +289,7 @@ void GameMap::Draw()
                         sprite->SetWidth(tileWidth);
                         sprite->SetHeight(tileHeight);
 
-                        sprite->Draw(position, &sourceRECT, D3DXVECTOR2(), trans);
+                        sprite->Draw(position, sourceRECT, D3DXVECTOR2(), trans);
                     }
                 }
             }

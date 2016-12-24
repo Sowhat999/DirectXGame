@@ -50,6 +50,9 @@
     <Filter Include="FrameWork\GameObjects\Objects\Brick">
       <UniqueIdentifier>{12bac22a-461f-4a5a-8775-261018ae6cb0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\GameComponents\Transition">
+      <UniqueIdentifier>{11115038-0015-4093-b97b-aec275588073}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -169,9 +172,6 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>FrameWork\GameScenes</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
@@ -216,6 +216,24 @@
     </ClCompile>
     <ClCompile Include="BrickNormal.cpp">
       <Filter>FrameWork\GameObjects\Objects\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition\SceneTransition.cpp">
+      <Filter>FrameWork\GameComponents\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition\Shader.cpp">
+      <Filter>FrameWork\GameComponents\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition\TransitionCircleScan.cpp">
+      <Filter>FrameWork\GameComponents\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition\TransitionEffect.cpp">
+      <Filter>FrameWork\GameComponents\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScene.cpp">
+      <Filter>FrameWork\GameScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>FrameWork\GameComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -351,9 +369,6 @@
     <ClInclude Include="MyGraphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>FrameWork\GameScenes</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>FrameWork\GameComponents</Filter>
     </ClInclude>
@@ -402,12 +417,29 @@
     <ClInclude Include="GameDefine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Transition\SceneTransition.h">
+      <Filter>FrameWork\GameComponents\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition\Shader.h">
+      <Filter>FrameWork\GameComponents\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition\TransitionCircleScan.h">
+      <Filter>FrameWork\GameComponents\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition\TransitionEffect.h">
+      <Filter>FrameWork\GameComponents\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScene.h">
+      <Filter>FrameWork\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>FrameWork\GameComponents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="MapReader\Tmx.h.in">
       <Filter>FrameWork\ThirdParty\MapReader</Filter>
     </None>
     <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

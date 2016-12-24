@@ -5,6 +5,7 @@
 #include "GameLog.h"
 #include "GameMap.h"
 #include "Player.h"
+#include "GameDebugDraw.h"
 
 class SceneGamePlay : public Scene
 {
@@ -26,16 +27,20 @@ public:
 
     void OnKeyDown(int keyCode);
     void OnKeyUp(int keyCode);
+    void OnMouseDown(float x, float y);
 
     void checkCollision();
 
 private:
     void CheckCameraAndWorldMap();
+    void drawQuadTree(QuadTree *quadtree);
 
     float angle;
     GameMap *mMap;
     Camera *mCamera;
     Player *mMario;
+    //GameDebugDraw *debug;
+    std::vector<Entity*> listCollision;
 
     std::map<int, bool>     mKeyCodes;
 };
